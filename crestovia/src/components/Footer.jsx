@@ -1,5 +1,6 @@
 import { FaInstagram, FaLinkedin, FaFacebook, FaYoutube } from 'react-icons/fa'
 import { FOOTER_LINKS, SOCIAL_LINKS } from '../constants'
+import Logo from './Logo'
 
 const iconMap = {
   instagram: FaInstagram,
@@ -15,13 +16,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#home" className="flex items-center gap-2 mb-4">
-              <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center font-extrabold text-sm text-white">
-                C
-              </span>
-              <span className="text-xl font-extrabold text-gray-900">
-                Crest<span className="gradient-text">ovia</span>
-              </span>
+            <a href="#home" className="group mb-4 inline-block">
+              <Logo />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
               Premium digital marketing agency specializing in Real Estate growth, branding, and lead generation.

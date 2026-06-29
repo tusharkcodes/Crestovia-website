@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { NAV_LINKS } from '../constants'
 import Button from './Button'
+import Logo from './Logo'
 import { useNavbarScroll } from '../hooks'
 
 const Navbar = () => {
@@ -25,13 +26,8 @@ const Navbar = () => {
       }`}
     >
       <nav className="container-custom flex items-center justify-between h-16 md:h-20 px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex items-center gap-2 group" aria-label="Crestovia Home">
-          <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center font-extrabold text-sm text-white shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-transform duration-300">
-            C
-          </span>
-          <span className="text-xl font-extrabold text-gray-900 tracking-tight">
-            Crest<span className="gradient-text">ovia</span>
-          </span>
+        <a href="#home" className="group" aria-label="Crestovia Home">
+          <Logo />
         </a>
 
         {/* Desktop Nav */}
