@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
 import { projectsConfig } from '../../data/projects';
 import { loadProjectImages } from '../../utils/loadAssets';
 import { fadeInUp } from '../../utils/animations';
@@ -45,6 +47,15 @@ export default function Projects() {
             A curated showcase of our finest work across real estate, lifestyle,
             and premium brand campaigns.
           </motion.p>
+          <motion.div variants={fadeInUp} custom={0.3}>
+            <Link
+              to="/our-work"
+              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
+            >
+              View All Case Studies
+              <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </motion.div>
 
         {projects.length > 0 ? (
@@ -52,6 +63,7 @@ export default function Projects() {
             {projects.map((project, index) => (
               <ProjectCard
                 key={project.slug}
+                slug={project.slug}
                 name={project.name}
                 image={project.image}
                 index={index}

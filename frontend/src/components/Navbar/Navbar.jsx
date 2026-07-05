@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi';
 import { navLinks } from '../../data/navigation';
+import ServicesDropdown, { ServicesMobileAccordion } from './ServicesDropdown';
+import Logo from '../Logo/Logo';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useActiveSection } from '../../hooks/useActiveSection';
 
@@ -14,12 +16,29 @@ export default function Navbar() {
   const activeSection = useActiveSection(sectionIds);
   const location = useLocation();
 
+  const useLightNavText =
+    !scrolled &&
+    (location.pathname === '/' ||
+      location.pathname === '/our-work' ||
+      location.pathname === '/about' ||
+      location.pathname === '/contact' ||
+      location.pathname.startsWith('/services/'));
+
   const isActive = (link) => {
+    if (link.href === '/our-work') return location.pathname === '/our-work';
+    if (link.href === '/about') return location.pathname === '/about';
+    if (link.href === '/contact') return location.pathname === '/contact';
     if (link.sectionId === 'hero') return location.pathname === '/' && activeSection === 'hero';
-    return activeSection === link.sectionId;
+    if (!link.sectionId) return false;
+    return location.pathname === '/' && activeSection === link.sectionId;
   };
 
   const handleNavClick = () => setMobileOpen(false);
+
+  const linkClass = (link) => {
+    if (isActive(link)) return useLightNavText ? 'text-white' : 'text-primary';
+    return useLightNavText ? 'text-white/80 hover:text-white' : 'text-navy/70 hover:text-primary';
+  };
 
   return (
     <motion.header
@@ -38,34 +57,34 @@ export default function Navbar() {
               : 'bg-transparent'
           }`}
         >
-          <Link to="/" className="group flex items-center gap-3" onClick={handleNavClick}>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-blue-700 shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:scale-105">
-              <span className="text-sm font-bold text-white">AD</span>
-            </div>
-            <span
-              className={`hidden text-lg font-bold tracking-tight transition-colors sm:block ${
-                scrolled ? 'text-navy' : 'text-white'
-              }`}
-            >
-              Crestovia
-            </span>
-          </Link>
+          <Logo onClick={handleNavClick} />
 
           <ul className="hidden items-center gap-1 lg:flex">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <li key={link.label}>
                 <Link
                   to={link.href}
                   onClick={handleNavClick}
-                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(link)
-                      ? scrolled
-                        ? 'text-primary'
-                        : 'text-white'
-                      : scrolled
-                        ? 'text-navy/70 hover:text-primary'
-                        : 'text-white/80 hover:text-white'
-                  }`}
+                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-300 ${linkClass(link)}`}
+                >
+                  {link.label}
+                  {isActive(link) && (
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-gold"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            ))}
+            <ServicesDropdown useLightText={useLightNavText} onNavigate={handleNavClick} />
+            {navLinks.slice(2).map((link) => (
+              <li key={link.label}>
+                <Link
+                  to={link.href}
+                  onClick={handleNavClick}
+                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-300 ${linkClass(link)}`}
                 >
                   {link.label}
                   {isActive(link) && (
@@ -82,7 +101,7 @@ export default function Navbar() {
 
           <div className="hidden lg:block">
             <Link
-              to="/#contact"
+              to="/contact"
               onClick={handleNavClick}
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-primary to-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40"
             >
@@ -95,7 +114,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`rounded-lg p-2 transition-colors lg:hidden ${
-              scrolled ? 'text-navy' : 'text-white'
+              useLightNavText ? 'text-white' : 'text-navy'
             }`}
             aria-label="Toggle menu"
           >
@@ -115,7 +134,23 @@ export default function Navbar() {
           >
             <div className="mt-2 rounded-2xl border border-white/20 bg-navy/95 p-4 shadow-2xl backdrop-blur-xl">
               <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => (
+                {navLinks.slice(0, 2).map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      onClick={handleNavClick}
+                      className={`block rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                        isActive(link)
+                          ? 'bg-primary/20 text-white'
+                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <ServicesMobileAccordion onNavigate={handleNavClick} />
+                {navLinks.slice(2).map((link) => (
                   <li key={link.label}>
                     <Link
                       to={link.href}
@@ -132,7 +167,7 @@ export default function Navbar() {
                 ))}
               </ul>
               <Link
-                to="/#contact"
+                to="/contact"
                 onClick={handleNavClick}
                 className="mt-4 block rounded-full bg-gradient-to-r from-primary to-blue-600 py-3 text-center text-sm font-semibold text-white"
               >

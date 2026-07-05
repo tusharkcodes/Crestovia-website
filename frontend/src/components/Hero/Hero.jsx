@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { HiArrowRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { company } from '../../data/company';
-import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
+import { fadeInUp, slideInLeft } from '../../utils/animations';
 
 function FloatingBlob({ className, delay = 0 }) {
   return (
@@ -58,12 +58,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.15),transparent_50%)]" />
       <Particles />
 
-      <div className="container-wide relative z-10 grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div className="container-wide relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={slideInLeft}
           initial="hidden"
           animate="visible"
-          className="text-center lg:text-left"
+          className="mx-auto max-w-3xl text-center"
         >
           <motion.span
             variants={fadeInUp}
@@ -92,7 +92,7 @@ export default function Hero() {
             custom={0.35}
             initial="hidden"
             animate="visible"
-            className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg lg:mx-0"
+            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg"
           >
             {company.description}
           </motion.p>
@@ -102,70 +102,23 @@ export default function Hero() {
             custom={0.5}
             initial="hidden"
             animate="visible"
-            className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Link
-              to="/#contact"
+              to="/contact"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-primary/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-primary/50 sm:w-auto"
             >
               Get Started
               <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
-              to="/#projects"
+              to="/our-work"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-gold/50 hover:bg-white/20 sm:w-auto"
             >
               View Our Work
               <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          variants={slideInRight}
-          initial="hidden"
-          animate="visible"
-          className="relative mx-auto w-full max-w-lg lg:max-w-none"
-        >
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative overflow-hidden rounded-3xl border border-white/20 bg-navy/40 p-2 shadow-2xl shadow-black/40 backdrop-blur-sm"
-          >
-            <div className="overflow-hidden rounded-2xl">
-              <video
-                className="aspect-[4/3] w-full object-cover sm:aspect-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source src="/videos/hero-placeholder.mp4" type="video/mp4" />
-              </video>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute -bottom-4 -left-4 rounded-2xl border border-white/20 bg-white/10 p-4 shadow-xl backdrop-blur-xl sm:-bottom-6 sm:-left-6"
-            >
-              <p className="text-2xl font-bold text-white sm:text-3xl">+450%</p>
-              <p className="text-xs text-white/70 sm:text-sm">Lead Increase</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-              className="absolute -right-4 -top-4 rounded-2xl border border-gold/30 bg-navy/80 p-4 shadow-xl backdrop-blur-xl sm:-right-6 sm:-top-6"
-            >
-              <p className="text-2xl font-bold text-gold sm:text-3xl">95%</p>
-              <p className="text-xs text-white/70 sm:text-sm">Success Rate</p>
-            </motion.div>
-          </motion.div>
-
-          <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-r from-primary/30 to-cyan-400/20 blur-2xl" />
         </motion.div>
       </div>
     </section>

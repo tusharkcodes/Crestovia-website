@@ -1,6 +1,14 @@
 {
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.2",
-    "tailwindcss": "^4.3.2"
+  "name": "crestovia-website",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "start:api": "npm run start --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

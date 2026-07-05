@@ -39,3 +39,8 @@ export function loadProjectImages() {
 
   return grouped;
 }
+
+export function getProjectImagesBySlug(slug) {
+  if (!slug) return [];
+  return loadProjectImages()[slug] ?? [];
+}

@@ -10,6 +10,7 @@ import {
 import { company } from '../../data/company';
 import { navLinks } from '../../data/navigation';
 import { services } from '../../data/services';
+import Logo from '../Logo/Logo';
 
 const socialIcons = [
   { icon: FaFacebookF, href: company.social.facebook, label: 'Facebook' },
@@ -35,12 +36,7 @@ export default function Footer() {
             className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4"
           >
             <div className="sm:col-span-2 lg:col-span-1">
-              <Link to="/" className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-blue-700">
-                  <span className="text-sm font-bold">AD</span>
-                </div>
-                <span className="text-lg font-bold">{company.name}</span>
-              </Link>
+              <Logo size="md" />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">
                 {company.description}
               </p>
@@ -86,7 +82,7 @@ export default function Footer() {
                 {services.slice(0, 5).map((service) => (
                   <li key={service.id}>
                     <Link
-                      to="/#services"
+                      to={`/services/${service.id}`}
                       className="text-sm text-white/60 transition-colors hover:text-white"
                     >
                       {service.name}

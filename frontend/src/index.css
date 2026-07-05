@@ -52,6 +52,15 @@
   .container-wide {
     @apply mx-auto w-full max-w-7xl;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes marquee {

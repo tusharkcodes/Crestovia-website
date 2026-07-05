@@ -17,7 +17,7 @@ export default function AboutCompany() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-gold">
+            <span className="mb-4 inline-block text-xl font-bold uppercase tracking-widest text-gold">
               Who We Are
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">

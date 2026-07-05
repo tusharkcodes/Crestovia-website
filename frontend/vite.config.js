@@ -6,12 +6,12 @@ export default defineConfig({
     tailwindcss(),
   ],
 
-  // server: {
-  //   host: '0.0.0.0',
-  //   allowedHosts: [
-  //     'chitinous-subthoracal-elianna.ngrok-free.dev'
-  //   ]
-  //   // Or, for development only:
-  //   // allowedHosts: true
-  // }
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
+  },
 })
