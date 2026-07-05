@@ -2,8 +2,8 @@
   "name": "crestovia-website",
   "private": true,
   "scripts": {
-    "dev": "npm run dev --prefix frontend",
-    "build": "npm run build --prefix frontend",
-    "preview": "npm run preview --prefix frontend"
+    "dev": "npm run dev --prefix crestovia",
+    "build": "npm run build --prefix crestovia",
+    "preview": "npm run preview --prefix crestovia"
   }
 }
