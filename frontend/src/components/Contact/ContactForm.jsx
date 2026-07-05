@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight, HiOutlineCheckCircle } from 'react-icons/hi';
+import { contactFormUrl } from '../../config/env';
 import { serviceOptions, budgetOptions } from '../../data/contact';
 import { FormInput, FormSelect, FormTextarea } from './FormField';
 
@@ -59,8 +60,6 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  const apiBase = import.meta.env.VITE_API_URL || '';
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -77,23 +76,37 @@ export default function ContactForm() {
       return;
     }
 
+    if (!contactFormUrl) {
+      setSubmitError('Contact form is not configured. Please email us directly.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch(`${apiBase}/api/contact`, {
+      const response = await fetch(contactFormUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          service: form.service,
+          company: form.company,
+          budget: form.budget,
+          message: form.message,
+          _subject: `New inquiry from ${form.fullName} — ${form.service}`,
+        }),
       });
 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        if (data.errors) {
-          setErrors(data.errors);
-        }
-        setSubmitError(data.message || 'Something went wrong. Please try again.');
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
         return;
       }
 
