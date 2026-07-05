@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { company, stats } from '../../data/company';
 import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
 import StatCard from './StatCard';
+import aboutImage from '../../assets/about/team-meeting.png';
 
 export default function AboutCompany() {
   return (
@@ -50,16 +51,14 @@ export default function AboutCompany() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-primary/20 to-cyan-500/10 p-8 shadow-2xl backdrop-blur-sm sm:p-12"
+              className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl"
             >
-              <div className="flex aspect-square items-center justify-center rounded-2xl bg-navy/50">
-                <div className="text-center">
-                  <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/40 bg-primary/20">
-                    <span className="text-3xl font-bold text-gold">AD</span>
-                  </div>
-                  <p className="text-xl font-bold text-white">{company.name}</p>
-                </div>
-              </div>
+              <img
+                src={aboutImage}
+                alt="Team collaborating on business strategy and analytics"
+                className="aspect-[4/5] w-full object-cover sm:aspect-[3/4]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
             </motion.div>
 
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-primary/20 blur-3xl" />

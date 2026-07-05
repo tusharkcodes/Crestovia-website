@@ -18,9 +18,9 @@ export default function ServiceCard({ service, index }) {
       className="group relative flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-lg shadow-navy/5 transition-shadow duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/15 sm:p-8"
     >
       <div
-        className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${service.accent} text-white shadow-lg transition-transform duration-500 group-hover:scale-110`}
+        className={`mb-6 inline-flex h-16 w-16 items-center justify-center ${service.accent}`}
       >
-        <Icon size={32} />
+        <Icon size={service.iconSize ?? 32} />
       </div>
 
       <h3 className="mb-3 text-xl font-bold text-navy">{service.name}</h3>
