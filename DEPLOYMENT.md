@@ -79,6 +79,35 @@ sudo systemctl status crestovia-api
 
 ## 4. Frontend build
 
+### Hostinger Git deployment (Build configuration panel)
+
+Your app lives in the **`crestovia/`** subfolder (not the repo root). Use these panel settings:
+
+| Setting | Correct value | Why |
+|---------|---------------|-----|
+| Framework preset | Vite | OK |
+| Branch | `prod/v2` (or your deploy branch) | OK if that branch has the latest code |
+| Node version | `22.x` | OK |
+| **Root directory** | **`crestovia`** | Required — Hostinger must `npm install` here so `vite` exists |
+| **Build command** | **`npm run build`** | Runs Vite inside `crestovia` |
+| Package manager | npm | OK |
+| **Output directory** | **`dist`** | Relative to root directory → `crestovia/dist` |
+
+If Root directory is left as `./`, the build fails with `vite: command not found` because only the root package is installed (not the Vite app).
+
+Optional environment variables (or rely on committed `crestovia/.env.production`):
+
+```
+VITE_SITE_URL=https://crestovia.in
+VITE_API_URL=https://crestovia.in/api
+```
+
+Then click **Save and redeploy**.
+
+**Important:** Hostinger’s static Git deploy only publishes the frontend. It does **not** start FastAPI. The contact form / admin API still need the backend running (systemd + Nginx `/api/` proxy) as described below.
+
+### Manual build (VPS)
+
 ```bash
 cd /var/www/crestovia/crestovia
 npm ci
