@@ -4,6 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // Repo-root `dist/` — Hostinger root is locked to `./` and publishes `dist`
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+  },
   server: {
     host: 'localhost',
     port: 5173,

@@ -81,21 +81,25 @@ sudo systemctl status crestovia-api
 
 ### Hostinger Git deployment (Build configuration panel)
 
-Your app lives in the **`crestovia/`** subfolder (not the repo root). Use these panel settings:
+Root directory is often **locked to `./`** on Hostinger — that is fine. Keep these settings:
 
-| Setting | Correct value | Why |
-|---------|---------------|-----|
-| Framework preset | Vite | OK |
-| Branch | `prod/v2` (or your deploy branch) | OK if that branch has the latest code |
-| Node version | `22.x` | OK |
-| **Root directory** | **`crestovia`** | Required — Hostinger must `npm install` here so `vite` exists |
-| **Build command** | **`npm run build`** | Runs Vite inside `crestovia` |
-| Package manager | npm | OK |
-| **Output directory** | **`dist`** | Relative to root directory → `crestovia/dist` |
+| Setting | Value |
+|---------|--------|
+| Framework preset | Vite |
+| Branch | `prod/v2` |
+| Node version | `22.x` |
+| Root directory | `./` (locked — OK) |
+| Build command | `npm run build` |
+| Package manager | npm |
+| **Output directory** | **`dist`** |
 
-If Root directory is left as `./`, the build fails with `vite: command not found` because only the root package is installed (not the Vite app).
+How this works with a locked root:
 
-Optional environment variables (or rely on committed `crestovia/.env.production`):
+1. Root `prebuild` runs `npm ci --prefix crestovia` (installs Vite)
+2. Vite builds into repo-root **`dist/`** (see `crestovia/vite.config.js` `outDir`)
+3. Hostinger publishes that `dist` folder
+
+Optional environment variables:
 
 ```
 VITE_SITE_URL=https://crestovia.in
@@ -112,7 +116,7 @@ Then click **Save and redeploy**.
 cd /var/www/crestovia/crestovia
 npm ci
 npm run build
-# Output: crestovia/dist
+# Output: repo-root dist/ (vite outDir ../dist)
 ```
 
 `crestovia/.env.production` already sets:
