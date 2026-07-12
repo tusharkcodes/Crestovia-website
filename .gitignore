@@ -10,11 +10,14 @@ build/
 **/dist-ssr/
 **/build/
 
-# Environment and secrets
+# Environment and secrets — never commit real secrets
 .env
-.env.*
-!.env.example
-*.local
+.env.local
+.env.*.local
+**/.env
+!**/.env.example
+!**/.env.development
+!**/.env.production
 
 # Python
 **/__pycache__/
@@ -23,6 +26,7 @@ build/
 **/venv/
 **/.pytest_cache/
 **/.mypy_cache/
+**/.ruff_cache/
 
 # Logs
 logs/

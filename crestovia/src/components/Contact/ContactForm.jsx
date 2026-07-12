@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight, HiOutlineCheckCircle } from 'react-icons/hi';
 import { serviceOptions, budgetOptions } from '../../data/contact';
+import { submitContact } from '../../utils/api';
 import { FormInput, FormSelect, FormTextarea } from './FormField';
 
 const initialForm = {
@@ -79,42 +80,23 @@ export default function ContactForm() {
     setSubmitError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: form.fullName.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          service: form.service,
-          company: form.company.trim(),
-          budget: form.budget,
-          message: form.message.trim(),
-        }),
+      await submitContact({
+        name: form.fullName.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        service: form.service,
+        company: form.company.trim(),
+        budget: form.budget,
+        message: form.message.trim(),
       });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        const detail = data.detail;
-        const message =
-          typeof detail === 'string'
-            ? detail
-            : Array.isArray(detail)
-              ? detail.map((d) => d.msg || 'Invalid input').join(', ')
-              : data.message || 'Something went wrong. Please try again.';
-        setSubmitError(message);
-        return;
-      }
 
       setSubmitted(true);
       setForm(initialForm);
       setErrors({});
-    } catch {
-      setSubmitError('Network error. Please check your connection and try again.');
+    } catch (err) {
+      setSubmitError(
+        err.message || 'Network error. Please check your connection and try again.',
+      );
     } finally {
       setIsSubmitting(false);
     }

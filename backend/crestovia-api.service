@@ -1,0 +1,19 @@
+[Unit]
+Description=Crestovia FastAPI backend
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/crestovia/backend
+EnvironmentFile=/var/www/crestovia/backend/.env
+ExecStart=/var/www/crestovia/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=always
+RestartSec=5
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

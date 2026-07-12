@@ -1,4 +1,26 @@
-const API_BASE = '';
+import { API_URL } from '../config/env';
+
+/**
+ * Build a full API URL from a path.
+ * Supports both:
+ *   VITE_API_URL=http://localhost:8000        → /api/... paths
+ *   VITE_API_URL=https://crestovia.in/api     → /... paths (or /api/... stripped)
+ */
+export function buildApiUrl(path) {
+  let normalized = path.startsWith('/') ? path : `/${path}`;
+
+  if (API_URL.endsWith('/api')) {
+    if (normalized.startsWith('/api/')) {
+      normalized = normalized.slice(4);
+    } else if (normalized === '/api') {
+      normalized = '';
+    }
+  } else if (!normalized.startsWith('/api/') && normalized !== '/api') {
+    normalized = `/api${normalized}`;
+  }
+
+  return `${API_URL}${normalized}`;
+}
 
 function getToken() {
   return sessionStorage.getItem('crestovia_admin_token') || '';
@@ -23,7 +45,7 @@ async function request(path, options = {}) {
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = await fetch(buildApiUrl(path), {
     ...options,
     headers,
     credentials: 'include',
@@ -49,25 +71,25 @@ async function request(path, options = {}) {
 }
 
 export function submitContact(payload) {
-  return request('/api/contact', {
+  return request('/contact', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
 }
 
 export function adminLogin(email, password) {
-  return request('/api/admin/login', {
+  return request('/admin/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
   });
 }
 
 export function adminLogout() {
-  return request('/api/admin/logout', { method: 'POST' });
+  return request('/admin/logout', { method: 'POST' });
 }
 
 export function adminMe() {
-  return request('/api/admin/me');
+  return request('/admin/me');
 }
 
 export function fetchLeads({ page = 1, pageSize = 10, search = '' } = {}) {
@@ -76,9 +98,9 @@ export function fetchLeads({ page = 1, pageSize = 10, search = '' } = {}) {
     page_size: String(pageSize),
   });
   if (search.trim()) params.set('search', search.trim());
-  return request(`/api/admin/leads?${params.toString()}`);
+  return request(`/admin/leads?${params.toString()}`);
 }
 
 export function fetchLeadStats() {
-  return request('/api/admin/leads/stats');
+  return request('/admin/leads/stats');
 }

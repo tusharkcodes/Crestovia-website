@@ -8,10 +8,12 @@ build
 
 # Environment and secrets
 .env
-.env.*
+.env.local
+.env.*.local
+# Allow committed Vite env templates (no secrets — public VITE_* only)
 !.env.example
 !.env.development
-*.local
+!.env.production
 
 # Logs
 logs

@@ -1,5 +1,4 @@
-"""
-Crestovia FastAPI backend
+# Crestovia FastAPI backend
 
 ## Setup
 
@@ -12,11 +11,27 @@ source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
 # Edit .env with MongoDB URI + ADMIN_EMAIL + ADMIN_PASSWORD + JWT_SECRET
+```
+
+### Local development
+
+```bash
+# In .env set APP_ENV=development DEBUG=true COOKIE_SECURE=false
+# and CORS_ORIGINS including http://localhost:5173
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-API base: http://localhost:8000/api  
-Docs (debug): http://localhost:8000/api/docs
+### Production
+
+```bash
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips=127.0.0.1
+```
+
+Or use the systemd unit: `crestovia-api.service`.
+
+API (production): https://crestovia.in/api/  
+Health: https://crestovia.in/health  
+Docs: disabled unless `DEBUG=true`
 
 ## MongoDB Atlas
 
@@ -33,7 +48,10 @@ Hidden frontend routes (not linked in public nav):
 
 Credentials come from `.env` (`ADMIN_EMAIL`, `ADMIN_PASSWORD`).
 
-## Nginx
+## Nginx / systemd
 
-See `nginx.example.conf` — proxy `/api/` to uvicorn, SPA for everything else including `/admin/*`.
-"""
+See:
+
+- `nginx.example.conf` — full reverse proxy + SSL
+- `crestovia-api.service` — systemd unit
+- `../DEPLOYMENT.md` — Hostinger deployment steps
