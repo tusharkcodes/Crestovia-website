@@ -5,26 +5,26 @@ import ServiceCard from './ServiceCard';
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-white">
+    <section id="services" className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="container-wide">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-10 max-w-2xl text-center sm:mb-12 lg:mb-14"
         >
           <motion.span
             variants={fadeInUp}
             custom={0}
-            className="mb-4 inline-block rounded-md bg-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-gold"
+            className="mb-3 inline-block rounded-md bg-gold/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-gold sm:text-xs"
           >
             Our Services
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={0.1}
-            className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl lg:text-5xl"
+            className="text-2xl font-extrabold tracking-tight text-navy sm:text-3xl lg:text-4xl"
           >
             What Our Digital Marketing Agency{' '}
             <span className="text-gradient">Offers</span>
@@ -32,7 +32,7 @@ export default function Services() {
           <motion.p
             variants={fadeInUp}
             custom={0.2}
-            className="mt-5 text-base leading-relaxed text-slate-500 sm:text-lg"
+            className="mt-3 text-sm leading-relaxed text-slate-500 sm:mt-4 sm:text-base"
           >
             End-to-end digital solutions engineered to elevate your brand, amplify
             your reach, and deliver measurable business growth.
@@ -44,10 +44,10 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4"
         >
           {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+            <ServiceCard key={service.id} service={service} index={index} compact />
           ))}
         </motion.div>
       </div>

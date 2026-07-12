@@ -2,35 +2,61 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
 
-export default function ServiceCard({ service, index }) {
+export default function ServiceCard({ service, index, compact = false }) {
   const Icon = service.icon;
+  const iconSize = compact ? 28 : (service.iconSize ?? 48);
 
   return (
     <motion.article
       variants={{
-        hidden: { opacity: 0, y: 40 },
+        hidden: { opacity: 0, y: 24 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] },
+          transition: { duration: 0.5, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] },
         },
       }}
-      whileHover={{ y: -6 }}
-      className="group relative flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-lg shadow-navy/5 transition-shadow duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/10 sm:p-8"
+      whileHover={{ y: -4 }}
+      className={`group relative flex h-full flex-col rounded-xl border border-slate-100 bg-white shadow-md shadow-navy/5 transition-shadow duration-300 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10 ${
+        compact ? 'p-3.5 sm:p-4 lg:p-5' : 'rounded-2xl p-6 shadow-lg sm:p-8'
+      }`}
     >
-      <Link to={`/services/${service.id}`} className="flex flex-1 flex-col">
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-slate-50">
-          <Icon size={service.iconSize ?? 48} />
+      <Link to={`/services/${service.id}`} className="flex h-full min-h-0 flex-1 flex-col">
+        <div
+          className={`mb-3 inline-flex shrink-0 items-center justify-center rounded-lg bg-slate-50 sm:mb-3.5 ${
+            compact ? 'h-10 w-10 sm:h-11 sm:w-11' : 'mb-6 h-16 w-16 rounded-xl'
+          }`}
+        >
+          <Icon size={iconSize} />
         </div>
 
-        <h3 className="mb-3 text-xl font-bold text-navy">{service.name}</h3>
-        <p className="mb-6 flex-grow text-sm leading-relaxed text-slate-500 sm:text-base">
+        <h3
+          className={`mb-1.5 font-bold leading-snug text-navy ${
+            compact ? 'text-xs sm:text-sm lg:text-[15px]' : 'mb-3 text-xl'
+          }`}
+        >
+          {service.name}
+        </h3>
+        <p
+          className={`mb-3 flex-grow leading-relaxed text-slate-500 ${
+            compact
+              ? 'line-clamp-3 text-[11px] sm:line-clamp-4 sm:text-xs lg:text-[13px] lg:leading-relaxed'
+              : 'mb-6 text-sm sm:text-base'
+          }`}
+        >
           {service.description}
         </p>
 
-        <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+        <div
+          className={`mt-auto flex items-center gap-1.5 font-semibold text-primary ${
+            compact ? 'text-[11px] sm:text-xs' : 'gap-2 text-sm'
+          }`}
+        >
           <span>Learn more</span>
-          <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+          <HiArrowRight
+            size={compact ? 12 : 16}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
         </div>
       </Link>
     </motion.article>

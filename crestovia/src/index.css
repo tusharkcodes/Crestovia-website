@@ -128,3 +128,31 @@
 .animate-pulse-glow {
   animation: pulse-glow 4s ease-in-out infinite;
 }
+
+@keyframes typewriter-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typewriter-cursor {
+  animation: typewriter-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-pulse-glow,
+  .animate-marquee {
+    animation: none !important;
+  }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { HiX, HiChevronLeft, HiChevronRight, HiExternalLink } from 'react-icons/hi';
 import { getCategoryLabel } from '../../data/projects';
 import { getProjectImagesBySlug } from '../../utils/loadAssets';
 
@@ -9,6 +9,7 @@ export default function ProjectModal({ project, onClose }) {
   const images = project?.imageSlug ? getProjectImagesBySlug(project.imageSlug) : [];
   const heroImage = images[0] ?? null;
   const categoryLabel = getCategoryLabel(project.categoryId);
+  const isDiagram = project.categoryId === 'ai-web-app';
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -65,9 +66,13 @@ export default function ProjectModal({ project, onClose }) {
 
         <div className="overflow-y-auto">
           {/* Hero image */}
-          <div className="relative aspect-[16/9] shrink-0 bg-slate-100">
+          <div className={`relative aspect-[16/9] shrink-0 ${isDiagram ? 'bg-white' : 'bg-slate-100'}`}>
             {heroImage ? (
-              <img src={heroImage} alt={project.title} className="h-full w-full object-cover" />
+              <img
+                src={heroImage}
+                alt={project.title}
+                className={`h-full w-full ${isDiagram ? 'object-contain p-4' : 'object-cover'}`}
+              />
             ) : (
               <div className="flex h-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
                 <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">
@@ -75,7 +80,7 @@ export default function ProjectModal({ project, onClose }) {
                 </span>
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
+            <div className={`absolute inset-0 ${isDiagram ? 'bg-gradient-to-t from-navy/70 via-transparent to-transparent' : 'bg-gradient-to-t from-navy/50 via-transparent to-transparent'}`} />
             <div className="absolute bottom-5 left-5 right-5">
               <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-navy backdrop-blur-sm">
                 {categoryLabel}
@@ -102,6 +107,18 @@ export default function ProjectModal({ project, onClose }) {
                 </span>
               ))}
             </div>
+
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-primary/25 transition-transform hover:scale-[1.02]"
+              >
+                Visit {project.url.replace(/^https?:\/\//, '')}
+                <HiExternalLink size={16} />
+              </a>
+            )}
 
             {/* Gallery */}
             {images.length > 1 && (

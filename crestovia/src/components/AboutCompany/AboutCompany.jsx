@@ -55,8 +55,10 @@ export default function AboutCompany() {
             >
               <img
                 src={aboutImage}
-                alt="Team collaborating on business strategy and analytics"
-                className="aspect-[4/5] w-full object-cover sm:aspect-[3/4]"
+                alt="Crestovia team collaborating in a modern office"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
             </motion.div>

@@ -34,6 +34,7 @@ const project = (
   result: details.result,
   services: details.services,
   metrics: details.metrics ?? [],
+  url: details.url ?? null,
 });
 
 export const workProjects = [
@@ -307,105 +308,105 @@ export const workProjects = [
   ),
 
   // ── AI / Web / App Development ─────────────────────────────
-  project('lead-automation', 'ai-web-app', 'Lead Automation System', null,
-    'AI-powered lead qualification routing Meta Ads, forms, and CRM in real time.',
-    ['AI Agents', 'CRM Integration', 'Automation'],
+  project('crm-workflow', 'ai-web-app', 'CRM Workflow', 'crm-workflow',
+    'Automated CRM workflow syncing HubSpot and Postgres — compare datasets, update records, and merge results in one pipeline.',
+    ['CRM', 'Automation', 'Integrations'],
     {
-      client: 'Real Estate Developer',
-      challenge: 'Leads sat unassigned for hours; response time killed conversions.',
-      solution: 'AI scoring model with webhook integrations and WhatsApp notifications.',
-      process: 'Process mapping, API integration, prompt engineering, monitoring dashboards.',
-      result: 'Response time dropped from hours to under two minutes.',
-      services: ['AI Automation', 'CRM Integration', 'Web Development'],
+      client: 'Crestovia Client',
+      challenge: 'Sales and ops teams juggled HubSpot and Postgres manually, causing delays and mismatched records.',
+      solution: 'An automated workflow that pulls from both systems, compares datasets, updates CRM and database, then merges results.',
+      process: 'Trigger design, HubSpot + Postgres connectors, compare-datasets logic, merge node, and monitoring.',
+      result: 'Reliable end-to-end CRM sync with far less manual work and cleaner data.',
+      services: ['AI Automation', 'CRM Integration', 'Workflow Design'],
+      metrics: [
+        { label: 'Manual Tasks', value: '↓ 85%' },
+        { label: 'Data Accuracy', value: '↑ 40%' },
+      ],
+    }
+  ),
+  project('lead-management', 'ai-web-app', 'Lead Management', 'lead-management',
+    'AI automation for real estate & property management — leads, listings, clients, and maintenance in one connected system.',
+    ['AI Automation', 'Lead Gen', 'Real Estate'],
+    {
+      client: 'Real Estate & Property Management',
+      challenge: 'Leads, listings, clients, and maintenance requests lived in disconnected tools with slow follow-up.',
+      solution: 'Central AI automation hub routing leads, listings, clients, and maintenance through one intelligent workflow.',
+      process: 'Process mapping, AI automation design, CRM hooks, and dashboards for ops teams.',
+      result: 'Faster lead response and unified visibility across property operations.',
+      services: ['AI Automation', 'Lead Management', 'CRM Integration'],
       metrics: [
         { label: 'Response Time', value: '< 2 min' },
-        { label: 'Assignment Accuracy', value: '94%' },
         { label: 'Follow-up Rate', value: '↑ 78%' },
       ],
     }
   ),
-  project('crm-automation', 'ai-web-app', 'CRM Workflow Automation', null,
-    'End-to-end automation connecting marketing, sales, and customer success.',
-    ['Workflow', 'AI Summaries', 'Integrations'],
-    {
-      client: 'Multi-service Agency Client',
-      challenge: 'Teams spent more time on spreadsheets than selling.',
-      solution: 'Unified automation layer with trigger-based workflows and AI summaries.',
-      process: 'Workflow audit, blueprint, phased implementation, team training.',
-      result: 'Operations overhead reduced; data accuracy and productivity improved.',
-      services: ['AI Automation', 'CRM Integration'],
-      metrics: [
-        { label: 'Manual Tasks', value: '↓ 85%' },
-        { label: 'Productivity', value: '↑ 40%' },
-      ],
-    }
-  ),
-  project('crestovia-web', 'ai-web-app', 'Crestovia Website', null,
-    'Premium agency website with modern React architecture and performance focus.',
+  project('crestovia-website', 'ai-web-app', 'Crestovia Website', 'crestovia-website',
+    'Premium agency website for Crestovia — modern React build, performance-focused, live at crestovia.in.',
     ['React', 'UI/UX', 'Performance'],
     {
       client: 'Crestovia',
       challenge: 'Needed a digital presence matching the premium quality of client work.',
-      solution: 'React + Tailwind stack with Framer Motion micro-interactions.',
+      solution: 'React + Tailwind stack with Framer Motion micro-interactions and a polished marketing site.',
       process: 'Design system, component architecture, responsive build, deployment.',
       result: 'Fast, polished site that serves as a living portfolio.',
       services: ['Web Development', 'UI/UX Design', 'Branding'],
+      url: 'https://crestovia.in',
       metrics: [
-        { label: 'Lighthouse Score', value: '96' },
+        { label: 'Live URL', value: 'crestovia.in' },
         { label: 'Load Time', value: '< 1.5s' },
       ],
     }
   ),
 
   // ── Influencer Shoots ──────────────────────────────────────
-  project('airavat-influencer', 'influencer-shoots', 'Airavat Influencer Campaign', 'airavat',
-    'Curated influencer partnerships showcasing luxury lifestyle at Airavat.',
-    ['Influencer Marketing', 'Content Production', 'Luxury'],
-    {
-      client: 'Airavat Realty',
-      challenge: 'Needed authentic lifestyle content to reach younger affluent buyers.',
-      solution: 'Hand-picked influencers with architectural and lifestyle briefs.',
-      process: 'Talent curation, shoot direction, content editing, cross-channel distribution.',
-      result: 'Authentic content that expanded reach into new demographic segments.',
-      services: ['Influencer Shoots', 'Social Media', 'Video Production'],
-      metrics: [
-        { label: 'Reach', value: '↑ 500K' },
-        { label: 'Engagement', value: '↑ 4×' },
-      ],
-    }
-  ),
-  project('royal-complex-influencer', 'influencer-shoots', 'Royal Complex Shoot', 'royal-complex',
-    'On-site influencer production capturing the premium living experience.',
-    ['On-site Shoot', 'Reels', 'Stories'],
-    {
-      client: 'Royal Complex Developers',
-      challenge: 'Static marketing assets weren\'t conveying the lived experience.',
-      solution: 'Professional on-site shoots with lifestyle and architectural angles.',
-      process: 'Location scouting, talent briefing, multi-day production, post-production.',
-      result: 'High-quality UGC-style content for ads and organic social.',
-      services: ['Influencer Shoots', 'Graphic Design', 'Meta Ads'],
-      metrics: [
-        { label: 'Video Views', value: '↑ 1.2M' },
-        { label: 'Ad Performance', value: '↑ 3×' },
-      ],
-    }
-  ),
-  project('green-one-influencer', 'influencer-shoots', 'Green One Eco Shoot', 'green-one',
-    'Sustainability-focused influencer content for eco-conscious audiences.',
-    ['Eco Lifestyle', 'Content Series', 'Brand Story'],
-    {
-      client: 'Green One Properties',
-      challenge: 'Needed credible voices to validate sustainability claims.',
-      solution: 'Eco-lifestyle influencers documenting the green living experience.',
-      process: 'Influencer matching, creative briefs, shoot coordination, content rollout.',
-      result: 'Credible third-party validation driving trust and inquiries.',
-      services: ['Influencer Shoots', 'Social Media Management', 'Branding'],
-      metrics: [
-        { label: 'Trust Score', value: '↑ 45%' },
-        { label: 'Inquiries', value: '↑ 38%' },
-      ],
-    }
-  ),
+  // project('airavat-influencer', 'influencer-shoots', 'Airavat Influencer Campaign', 'airavat',
+  //   'Curated influencer partnerships showcasing luxury lifestyle at Airavat.',
+  //   ['Influencer Marketing', 'Content Production', 'Luxury'],
+  //   {
+  //     client: 'Airavat Realty',
+  //     challenge: 'Needed authentic lifestyle content to reach younger affluent buyers.',
+  //     solution: 'Hand-picked influencers with architectural and lifestyle briefs.',
+  //     process: 'Talent curation, shoot direction, content editing, cross-channel distribution.',
+  //     result: 'Authentic content that expanded reach into new demographic segments.',
+  //     services: ['Influencer Shoots', 'Social Media', 'Video Production'],
+  //     metrics: [
+  //       { label: 'Reach', value: '↑ 500K' },
+  //       { label: 'Engagement', value: '↑ 4×' },
+  //     ],
+  //   }
+  // ),
+  // project('royal-complex-influencer', 'influencer-shoots', 'Royal Complex Shoot', 'royal-complex',
+  //   'On-site influencer production capturing the premium living experience.',
+  //   ['On-site Shoot', 'Reels', 'Stories'],
+  //   {
+  //     client: 'Royal Complex Developers',
+  //     challenge: 'Static marketing assets weren\'t conveying the lived experience.',
+  //     solution: 'Professional on-site shoots with lifestyle and architectural angles.',
+  //     process: 'Location scouting, talent briefing, multi-day production, post-production.',
+  //     result: 'High-quality UGC-style content for ads and organic social.',
+  //     services: ['Influencer Shoots', 'Graphic Design', 'Meta Ads'],
+  //     metrics: [
+  //       { label: 'Video Views', value: '↑ 1.2M' },
+  //       { label: 'Ad Performance', value: '↑ 3×' },
+  //     ],
+  //   }
+  // ),
+  // project('green-one-influencer', 'influencer-shoots', 'Green One Eco Shoot', 'green-one',
+  //   'Sustainability-focused influencer content for eco-conscious audiences.',
+  //   ['Eco Lifestyle', 'Content Series', 'Brand Story'],
+  //   {
+  //     client: 'Green One Properties',
+  //     challenge: 'Needed credible voices to validate sustainability claims.',
+  //     solution: 'Eco-lifestyle influencers documenting the green living experience.',
+  //     process: 'Influencer matching, creative briefs, shoot coordination, content rollout.',
+  //     result: 'Credible third-party validation driving trust and inquiries.',
+  //     services: ['Influencer Shoots', 'Social Media Management', 'Branding'],
+  //     metrics: [
+  //       { label: 'Trust Score', value: '↑ 45%' },
+  //       { label: 'Inquiries', value: '↑ 38%' },
+  //     ],
+  //   }
+  // ),
 ];
 
 export function getProjectsByCategory(categoryId) {

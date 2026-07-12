@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight, HiOutlineCheckCircle } from 'react-icons/hi';
-import { contactFormUrl } from '../../config/env';
 import { serviceOptions, budgetOptions } from '../../data/contact';
 import { FormInput, FormSelect, FormTextarea } from './FormField';
 
@@ -76,37 +75,38 @@ export default function ContactForm() {
       return;
     }
 
-    if (!contactFormUrl) {
-      setSubmitError('Contact form is not configured. Please email us directly.');
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch(contactFormUrl, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          name: form.fullName,
-          email: form.email,
-          phone: form.phone,
+          name: form.fullName.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
           service: form.service,
-          company: form.company,
+          company: form.company.trim(),
           budget: form.budget,
-          message: form.message,
-          _subject: `New inquiry from ${form.fullName} — ${form.service}`,
+          message: form.message.trim(),
         }),
       });
 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setSubmitError(data.error || 'Something went wrong. Please try again.');
+        const detail = data.detail;
+        const message =
+          typeof detail === 'string'
+            ? detail
+            : Array.isArray(detail)
+              ? detail.map((d) => d.msg || 'Invalid input').join(', ')
+              : data.message || 'Something went wrong. Please try again.';
+        setSubmitError(message);
         return;
       }
 

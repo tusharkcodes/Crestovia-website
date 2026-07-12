@@ -4,15 +4,18 @@ import { getCategoryLabel } from '../../data/projects';
 
 export default function WorkProjectCard({ project, previewImage, onViewProject }) {
   const categoryLabel = getCategoryLabel(project.categoryId);
+  const isDiagram = project.categoryId === 'ai-web-app';
 
   return (
     <article className="group flex h-full w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-100/80 bg-white/80 shadow-lg shadow-navy/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 sm:w-[340px] lg:w-[380px]">
-      <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+      <div className={`relative aspect-[4/3] overflow-hidden ${isDiagram ? 'bg-white' : 'bg-slate-100'}`}>
         {previewImage ? (
           <img
             src={previewImage}
             alt={project.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
+              isDiagram ? 'object-contain p-3' : 'object-cover'
+            }`}
             loading="lazy"
           />
         ) : (

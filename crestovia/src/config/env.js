@@ -1,8 +1,9 @@
-/** Production site URL (https://crestovia.in). Override via VITE_SITE_URL. */
-export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://crestovia.in').replace(/\/$/, '');
+/** Site URL. Defaults to localhost in dev, production domain otherwise. Override via VITE_SITE_URL. */
+const defaultSiteUrl = import.meta.env.DEV ? 'http://localhost:5173' : 'https://crestovia.in';
+export const siteUrl = (import.meta.env.VITE_SITE_URL || defaultSiteUrl).replace(/\/$/, '');
 
 /**
  * Formspree (or compatible) endpoint for contact submissions.
- * Create a form at https://formspree.io and paste the URL here before deploying.
+ * Leave empty for local dev (form logs to console). Set before deploying.
  */
 export const contactFormUrl = (import.meta.env.VITE_CONTACT_FORM_URL || '').replace(/\/$/, '');
