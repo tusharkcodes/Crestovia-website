@@ -6,7 +6,7 @@ import whoWeAreImage from '../../assets/about/who-we-are.png';
 
 export default function WhoWeAre() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-surface">
       <div className="container-wide">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div
@@ -15,16 +15,16 @@ export default function WhoWeAre() {
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeInUp}
           >
-            <span className="mb-4 inline-block text-sm font-bold uppercase tracking-widest text-gold">
+            <span className="mb-4 inline-block text-sm font-bold uppercase tracking-widest text-accent">
               {whoWeAre.eyebrow}
             </span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {whoWeAre.title}
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-slate-500 sm:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-muted sm:text-lg">
               {whoWeAre.intro}
             </p>
-            <p className="mt-4 text-sm font-medium text-navy sm:text-base">
+            <p className="mt-4 text-sm font-medium text-foreground sm:text-base">
               We specialize in:
             </p>
             <div className="mt-4 flex flex-wrap gap-2">

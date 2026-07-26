@@ -4,7 +4,7 @@ import LogoMarquee from './LogoMarquee';
 
 export default function Clients() {
   return (
-    <section id="clients" className="section-padding overflow-hidden bg-navy">
+    <section id="clients" className="section-padding overflow-hidden bg-primary">
       <div className="container-wide">
         <motion.div
           initial="hidden"
@@ -15,7 +15,7 @@ export default function Clients() {
           <motion.span
             variants={fadeInUp}
             custom={0}
-            className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-gold"
+            className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent"
           >
             Trusted Partners
           </motion.span>

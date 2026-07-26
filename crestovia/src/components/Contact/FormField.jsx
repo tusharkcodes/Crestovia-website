@@ -1,12 +1,11 @@
-const fieldClass =
-  'w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-navy transition-colors placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20';
+const fieldClass = 'input-field';
 
-const errorClass = 'border-red-300 focus:border-red-400 focus:ring-red-200';
+const errorClass = 'border-error focus:border-error focus:ring-error/20';
 
 export function FormInput({ label, id, error, required, className = '', ...props }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-foreground">
         {label}
         {required && <span className="text-primary"> *</span>}
       </label>
@@ -18,7 +17,7 @@ export function FormInput({ label, id, error, required, className = '', ...props
         {...props}
       />
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-xs text-red-500" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-xs text-error" role="alert">
           {error}
         </p>
       )}
@@ -29,7 +28,7 @@ export function FormInput({ label, id, error, required, className = '', ...props
 export function FormSelect({ label, id, error, required, children, className = '', ...props }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-foreground">
         {label}
         {required && <span className="text-primary"> *</span>}
       </label>
@@ -43,7 +42,7 @@ export function FormSelect({ label, id, error, required, children, className = '
         {children}
       </select>
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-xs text-red-500" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-xs text-error" role="alert">
           {error}
         </p>
       )}
@@ -54,7 +53,7 @@ export function FormSelect({ label, id, error, required, children, className = '
 export function FormTextarea({ label, id, error, required, className = '', ...props }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-foreground">
         {label}
         {required && <span className="text-primary"> *</span>}
       </label>
@@ -66,7 +65,7 @@ export function FormTextarea({ label, id, error, required, className = '', ...pr
         {...props}
       />
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-xs text-red-500" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-xs text-error" role="alert">
           {error}
         </p>
       )}

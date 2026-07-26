@@ -10,7 +10,17 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
   const dropdownRef = useRef(null);
   const location = useLocation();
 
-  const isServicesActive = location.pathname.startsWith('/services');
+  const isServicesActive =
+    location.pathname.startsWith('/services') ||
+    [
+      '/website-development',
+      '/seo-services',
+      '/google-ads',
+      '/meta-ads',
+      '/branding',
+      '/social-media-marketing',
+      '/ai-automation',
+    ].includes(location.pathname);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -29,7 +39,7 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
       : 'text-primary'
     : useLightText
       ? 'text-white/80 hover:text-white'
-      : 'text-navy/70 hover:text-primary';
+      : 'text-foreground/70 hover:text-primary';
 
   const handleLinkClick = () => {
     setOpen(false);
@@ -55,7 +65,7 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
         {isServicesActive && (
           <motion.span
             layoutId="nav-indicator"
-            className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-gold"
+            className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-accent"
           />
         )}
       </button>
@@ -67,7 +77,7 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 top-full z-50 mt-2 w-72 overflow-visible rounded-2xl border border-slate-100 bg-white py-2 shadow-xl shadow-navy/10"
+            className="absolute left-0 top-full z-50 mt-2 w-72 overflow-visible rounded-2xl border border-border bg-surface py-2 shadow-xl shadow-primary/10"
           >
             {serviceNavItems.map((item) =>
               item.children ? (
@@ -83,8 +93,8 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
                       e.stopPropagation();
                       setTechOpen((prev) => !prev);
                     }}
-                    className={`flex w-full items-center justify-between px-4 py-2.5 text-sm transition-colors hover:bg-slate-50 hover:text-primary ${
-                      techOpen ? 'bg-slate-50 font-medium text-primary' : 'text-navy/80'
+                    className={`flex w-full items-center justify-between px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-primary ${
+                      techOpen ? 'bg-surface-alt font-medium text-primary' : 'text-foreground/80'
                     }`}
                     aria-expanded={techOpen}
                   >
@@ -104,16 +114,16 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
                         transition={{ duration: 0.15 }}
                         className="absolute left-full top-0 z-50 pl-1"
                       >
-                        <div className="w-52 overflow-hidden rounded-xl border border-slate-100 bg-white py-2 shadow-xl shadow-navy/10">
+                        <div className="w-52 overflow-hidden rounded-xl border border-border bg-surface py-2 shadow-xl shadow-primary/10">
                           {item.children.map((child) => (
                             <Link
                               key={child.id}
                               to={child.href}
                               onClick={handleLinkClick}
-                              className={`block px-4 py-2.5 text-sm transition-colors hover:bg-slate-50 hover:text-primary ${
+                              className={`block px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-primary ${
                                 location.pathname === child.href
                                   ? 'bg-primary/5 font-semibold text-primary'
-                                  : 'text-navy/80'
+                                  : 'text-foreground/80'
                               }`}
                             >
                               {child.label}
@@ -129,10 +139,10 @@ export default function ServicesDropdown({ useLightText, onNavigate }) {
                   key={item.id}
                   to={item.href}
                   onClick={handleLinkClick}
-                  className={`block px-4 py-2.5 text-sm transition-colors hover:bg-slate-50 hover:text-primary ${
+                  className={`block px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-primary ${
                     location.pathname === item.href
                       ? 'bg-primary/5 font-semibold text-primary'
-                      : 'text-navy/80'
+                      : 'text-foreground/80'
                   }`}
                 >
                   {item.label}
@@ -213,7 +223,7 @@ export function ServicesMobileAccordion({ onNavigate }) {
                               onClick={handleClick}
                               className={`block rounded-lg px-4 py-2 text-sm ${
                                 location.pathname === child.href
-                                  ? 'text-gold'
+                                  ? 'text-accent'
                                   : 'text-white/60 hover:text-white'
                               }`}
                             >
@@ -232,7 +242,7 @@ export function ServicesMobileAccordion({ onNavigate }) {
                     onClick={handleClick}
                     className={`block rounded-lg px-4 py-2.5 text-sm ${
                       location.pathname === item.href
-                        ? 'text-gold'
+                        ? 'text-accent'
                         : 'text-white/70 hover:text-white'
                     }`}
                   >

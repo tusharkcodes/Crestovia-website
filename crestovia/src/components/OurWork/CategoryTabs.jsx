@@ -15,7 +15,7 @@ export default function CategoryTabs({ activeCategory, onCategoryChange }) {
   }, [activeCategory]);
 
   return (
-    <div className="border-b border-slate-100 bg-white">
+    <div className="border-b border-border bg-surface">
       <div className="container-wide px-4 sm:px-6 lg:px-8">
         <div
           ref={listRef}
@@ -31,7 +31,7 @@ export default function CategoryTabs({ activeCategory, onCategoryChange }) {
                 data-active={isActive}
                 onClick={() => onCategoryChange(category.id)}
                 className={`relative shrink-0 px-4 py-4 text-sm font-medium transition-colors duration-200 sm:px-5 ${
-                  isActive ? 'text-navy' : 'text-slate-400 hover:text-slate-600'
+                  isActive ? 'text-foreground' : 'text-muted hover:text-foreground'
                 }`}
               >
                 {category.label}

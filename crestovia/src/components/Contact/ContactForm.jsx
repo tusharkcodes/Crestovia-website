@@ -112,8 +112,8 @@ export default function ContactForm() {
         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
           <HiOutlineCheckCircle size={28} />
         </div>
-        <h3 className="text-xl font-bold text-navy">Message Sent Successfully</h3>
-        <p className="mt-2 max-w-sm text-sm text-slate-500">
+        <h3 className="text-xl font-bold text-foreground">Message Sent Successfully</h3>
+        <p className="mt-2 max-w-sm text-sm text-muted">
           Thank you for reaching out. Our team will get back to you within 24 hours.
         </p>
         <button
@@ -129,8 +129,8 @@ export default function ContactForm() {
 
   return (
     <div className="h-full p-6 sm:p-8 lg:p-10">
-      <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">Get in Touch</h2>
-      <p className="mt-2 text-sm text-slate-500">
+      <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">Get in Touch</h2>
+      <p className="mt-2 text-sm text-muted">
         Tell us about your project and we&apos;ll craft a tailored solution for you.
       </p>
 
@@ -230,7 +230,7 @@ export default function ContactForm() {
         />
 
         {submitError && (
-          <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
+          <p className="rounded-xl border border-error/30 bg-error/10 px-4 py-3 text-sm text-error" role="alert">
             {submitError}
           </p>
         )}
@@ -238,7 +238,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/35 disabled:cursor-not-allowed disabled:opacity-70"
+          className="btn-primary group px-8 py-3.5 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
           {!isSubmitting && (

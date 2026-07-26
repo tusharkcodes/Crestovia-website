@@ -1,0 +1,33 @@
+{
+  "name": "Crestovia",
+  "short_name": "Crestovia",
+  "description": "Digital Marketing & AI Automation Agency in Pune",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFBFD",
+  "theme_color": "#0A3478",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/crestovia-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

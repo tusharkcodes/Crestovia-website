@@ -11,6 +11,7 @@ import { company } from '../../data/company';
 import { navLinks } from '../../data/navigation';
 import { services } from '../../data/services';
 import Logo from '../Logo/Logo';
+import { getServiceSeo } from '../../data/seo';
 
 const socialIcons = [
   { icon: FaFacebookF, href: company.social.facebook, label: 'Facebook' },
@@ -25,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative bg-black text-white">
+    <footer id="contact" className="relative bg-primary text-white">
       <div className="section-padding pb-8">
         <div className="container-wide">
           <motion.div
@@ -36,7 +37,7 @@ export default function Footer() {
             className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4"
           >
             <div className="sm:col-span-2 lg:col-span-1">
-              <Logo size="md" />
+              <Logo size="lg" />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">
                 {company.description}
               </p>
@@ -48,7 +49,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-all duration-300 hover:border-gold/50 hover:bg-gold/10 hover:text-gold"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-all duration-300 hover:border-accent/50 hover:bg-accent/10 hover:text-accent"
                   >
                     <Icon size={16} />
                   </a>
@@ -57,7 +58,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-gold">
+              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-accent">
                 Quick Links
               </h4>
               <ul className="space-y-3">
@@ -71,29 +72,52 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link to="/services" className="text-sm text-white/60 transition-colors hover:text-white">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio" className="text-sm text-white/60 transition-colors hover:text-white">
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blogs" className="text-sm text-white/60 transition-colors hover:text-white">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-gold">
+              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-accent">
                 Services
               </h4>
               <ul className="space-y-3">
-                {services.slice(0, 5).map((service) => (
-                  <li key={service.id}>
-                    <Link
-                      to={`/services/${service.id}`}
-                      className="text-sm text-white/60 transition-colors hover:text-white"
-                    >
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
+                {services.slice(0, 5).map((service) => {
+                  const href = getServiceSeo(service.id).path;
+                  return (
+                    <li key={service.id}>
+                      <Link
+                        to={href}
+                        className="text-sm text-white/60 transition-colors hover:text-white"
+                      >
+                        {service.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+                <li>
+                  <Link to="/services" className="text-sm font-medium text-accent transition-colors hover:text-white">
+                    All services
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-gold">
+              <h4 className="mb-5 text-sm font-bold uppercase tracking-widest text-accent">
                 Contact
               </h4>
               <ul className="space-y-4 text-sm text-white/60">
@@ -103,7 +127,7 @@ export default function Footer() {
                   </span>
                   <a
                     href={`mailto:${company.email}`}
-                    className="transition-colors hover:text-gold"
+                    className="transition-colors hover:text-accent"
                   >
                     {company.email}
                   </a>
@@ -112,7 +136,7 @@ export default function Footer() {
                   <span className="mb-1 block text-xs uppercase tracking-wider text-white/40">
                     Phone
                   </span>
-                  <a href={`tel:${company.phone}`} className="transition-colors hover:text-gold">
+                  <a href={`tel:${company.phone}`} className="transition-colors hover:text-accent">
                     {company.phone}
                   </a>
                 </li>
@@ -136,7 +160,7 @@ export default function Footer() {
               onClick={scrollToTop}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/70 transition-all hover:border-gold/50 hover:text-gold"
+              className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/70 transition-all hover:border-accent/50 hover:text-accent"
             >
               Back To Top
               <FaArrowUp className="transition-transform group-hover:-translate-y-0.5" size={12} />
@@ -145,7 +169,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+      <div className="h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
     </footer>
   );
 }

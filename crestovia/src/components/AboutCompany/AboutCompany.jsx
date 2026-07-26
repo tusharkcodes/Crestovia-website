@@ -6,8 +6,8 @@ import aboutImage from '../../assets/about/team-meeting.png';
 
 export default function AboutCompany() {
   return (
-    <section id="about" className="section-padding relative overflow-hidden bg-gradient-to-br from-navy via-navy-light to-navy">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(37,99,235,0.2),transparent_50%)]" />
+    <section id="about" className="section-padding relative overflow-hidden bg-gradient-to-br from-primary via-primary-hover to-primary">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(10,52,120,0.2),transparent_50%)]" />
 
       <div className="container-wide relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -17,11 +17,11 @@ export default function AboutCompany() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <span className="mb-4 inline-block text-xl font-bold uppercase tracking-widest text-gold">
+            <span className="mb-4 inline-block text-xl font-bold uppercase tracking-widest text-accent">
               Who We Are
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              About <span className="text-gradient">Company</span>
+              About Company
             </h2>
 
             <div className="mt-8 space-y-5">
@@ -60,7 +60,7 @@ export default function AboutCompany() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
             </motion.div>
 
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-primary/20 blur-3xl" />

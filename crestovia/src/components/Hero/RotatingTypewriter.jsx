@@ -23,6 +23,7 @@ export default function RotatingTypewriter({
   typingSpeed = 42,
   deletingSpeed = 28,
   className = '',
+  accentClassName = 'text-gradient-accent',
 }) {
   const phrases = useMemo(
     () => (items.length > 0 ? items : DEFAULT_ITEMS),
@@ -89,10 +90,12 @@ export default function RotatingTypewriter({
         {longest}
       </span>
       <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap px-1">
-        <span className="text-gradient-gold">{text}</span>
+        <span className={accentClassName}>{text}</span>
         {!reducedMotion && (
           <span
-            className="typewriter-cursor ml-0.5 inline-block h-[1em] w-[2px] shrink-0 bg-gold align-middle"
+            className={`typewriter-cursor ml-0.5 inline-block h-[1em] w-[2px] shrink-0 align-middle ${
+              accentClassName.includes('FF7A00') ? 'bg-[#FF7A00]' : 'bg-accent'
+            }`}
             aria-hidden="true"
           />
         )}

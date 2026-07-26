@@ -9,7 +9,7 @@ export const aboutHero = {
   eyebrow: 'About Us',
   title: 'About Crestovia',
   description:
-    "We don't simply deliver marketing and technology services. We engineer growth, build brands, and create digital experiences that leave a lasting impact.",
+    "Crestovia is a digital marketing agency in Pune, Maharashtra, India. We don't simply deliver marketing and technology services — we engineer growth, build brands, and create digital experiences that leave a lasting impact.",
 };
 
 export const whoWeAre = {

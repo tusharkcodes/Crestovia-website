@@ -11,27 +11,29 @@ const HERO_SUBHEADING =
 function HeroBackdrop() {
   return (
     <>
+      {/* Soft radial blue glows */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(37,99,235,0.35),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_15%,rgba(17,74,174,0.45),transparent_55%)]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_70%,rgba(212,175,55,0.12),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_75%,rgba(10,52,120,0.55),transparent_50%)]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-primary/25 blur-3xl animate-pulse-glow"
+        className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-[#114AAE]/25 blur-3xl animate-pulse-glow"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-16 bottom-1/4 h-80 w-80 rounded-full bg-cyan-400/15 blur-3xl animate-float"
+        className="pointer-events-none absolute -right-16 bottom-1/4 h-80 w-80 rounded-full bg-white/5 blur-3xl animate-float"
         aria-hidden="true"
       />
+      {/* Subtle white grid @ 8% */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+            'linear-gradient(rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.9) 1px, transparent 1px)',
           backgroundSize: '64px 64px',
         }}
         aria-hidden="true"
@@ -57,15 +59,18 @@ function SpecialtyLine() {
         {ready ? (
           <Suspense
             fallback={
-              <span className="text-base font-semibold text-gold sm:text-lg">
+              <span className="text-base font-semibold text-[#FF7A00] sm:text-lg">
                 Performance Marketing
               </span>
             }
           >
-            <RotatingTypewriter className="text-base font-semibold sm:text-lg md:text-xl" />
+            <RotatingTypewriter
+              className="text-base font-semibold sm:text-lg md:text-xl"
+              accentClassName="text-[#FF7A00]"
+            />
           </Suspense>
         ) : (
-          <span className="text-base font-semibold text-gold sm:text-lg">
+          <span className="text-base font-semibold text-[#FF7A00] sm:text-lg">
             Performance Marketing
           </span>
         )}
@@ -74,27 +79,41 @@ function SpecialtyLine() {
   );
 }
 
+/** Split tagline so only "That Sell." is orange — no gradient text */
+function HeroTagline({ tagline }) {
+  const marker = 'That Sell.';
+  const idx = tagline.indexOf(marker);
+  if (idx === -1) {
+    return <span className="mt-2 block text-white">{tagline}</span>;
+  }
+  const before = tagline.slice(0, idx);
+  return (
+    <span className="mt-2 block text-white">
+      {before}
+      <span className="text-[#FF7A00]">{marker}</span>
+    </span>
+  );
+}
+
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#0c1f3d] pt-28 pb-16 sm:pt-32 lg:pt-36"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36"
+      style={{
+        background: 'linear-gradient(135deg, #082C67 0%, #0A3478 55%, #114AAE 100%)',
+      }}
     >
       <HeroBackdrop />
 
       <div className="container-wide relative z-10 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-         {/*  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold backdrop-blur-md sm:text-sm">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
-            Premium Digital Marketing
-          </div> */}
-
           <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl">
-            Crest<span className='text-[#d4af37]'>ovia</span>
-            <span className="mt-2 block text-gradient">{company.tagline}</span>
+            Crest<span className="text-[#FF7A00]">o</span>via
+            <HeroTagline tagline={company.tagline} />
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:mt-8 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:mt-8 sm:text-lg">
             {HERO_SUBHEADING}
           </p>
 
@@ -103,20 +122,19 @@ export default function Hero() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row">
             <Link
               to="/contact"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-primary/40 transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-primary/50 sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-[#0A3478] shadow-lg shadow-black/10 transition-all duration-300 hover:scale-[1.02] hover:bg-[#FF7A00] hover:text-white sm:w-auto"
             >
               Get Started
               <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
-              to="/our-work"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:border-gold/50 hover:bg-white/15 sm:w-auto"
+              to="/portfolio"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white bg-transparent px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:border-[#FF7A00] hover:bg-[#FF7A00]/5 hover:text-[#FF7A00] sm:w-auto"
             >
               View Our Work
               <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
-
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ export default function RequireAdmin({ children }) {
 
   if (status === 'loading') {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-navy text-white/70">
+      <div className="flex min-h-screen items-center justify-center bg-primary text-white/70">
         Checking session…
       </div>
     );

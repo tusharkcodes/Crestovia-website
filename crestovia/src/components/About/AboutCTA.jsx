@@ -6,9 +6,9 @@ import { fadeInUp } from '../../utils/animations';
 
 export default function AboutCTA() {
   return (
-    <section className="section-padding relative overflow-hidden bg-gradient-to-br from-navy via-navy-light to-primary/80">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(37,99,235,0.2),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(212,175,55,0.08),transparent_45%)]" />
+    <section className="section-padding relative overflow-hidden bg-gradient-to-br from-primary via-primary-hover to-primary/80">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(10,52,120,0.2),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,122,0,0.08),transparent_45%)]" />
 
       <div className="container-wide relative z-10">
         <motion.div
@@ -23,7 +23,7 @@ export default function AboutCTA() {
           </h2>
           <Link
             to={aboutCta.buttonHref}
-            className="group mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-primary/40"
+            className="btn-primary group mt-10 px-8 py-4"
           >
             {aboutCta.buttonLabel}
             <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" size={18} />

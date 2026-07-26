@@ -7,8 +7,8 @@ export default function WorkProjectCard({ project, previewImage, onViewProject }
   const isDiagram = project.categoryId === 'ai-web-app';
 
   return (
-    <article className="group flex h-full w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-100/80 bg-white/80 shadow-lg shadow-navy/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 sm:w-[340px] lg:w-[380px]">
-      <div className={`relative aspect-[4/3] overflow-hidden ${isDiagram ? 'bg-white' : 'bg-slate-100'}`}>
+    <article className="group flex h-full w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border/80 bg-surface/80 shadow-lg shadow-primary/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 sm:w-[340px] lg:w-[380px]">
+      <div className={`relative aspect-[4/3] overflow-hidden ${isDiagram ? 'bg-surface' : 'bg-surface-alt'}`}>
         {previewImage ? (
           <img
             src={previewImage}
@@ -19,32 +19,32 @@ export default function WorkProjectCard({ project, previewImage, onViewProject }
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-            <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-surface-alt to-border">
+            <span className="text-xs font-semibold uppercase tracking-widest text-muted">
               {categoryLabel}
             </span>
           </div>
         )}
-        <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-navy shadow-sm backdrop-blur-sm">
+        <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm">
           {categoryLabel}
         </span>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-bold text-navy sm:text-xl">{project.title}</h3>
+        <h3 className="text-lg font-bold text-foreground sm:text-xl">{project.title}</h3>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="rounded-md bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-500"
+              className="rounded-md bg-surface-alt px-2 py-0.5 text-xs font-medium text-muted"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-500 line-clamp-3">
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted line-clamp-3">
           {project.description}
         </p>
 

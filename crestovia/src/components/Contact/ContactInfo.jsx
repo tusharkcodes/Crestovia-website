@@ -30,9 +30,9 @@ const details = [
 
 export default function ContactInfo() {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-navy-light to-primary/90 p-8 sm:rounded-3xl sm:p-10 lg:p-12">
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-hover to-primary/90 p-8 sm:rounded-3xl sm:p-10 lg:p-12">
       <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-white/5" />
-      <div className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 rounded-full border border-gold/10 bg-gold/[0.06]" />
+      <div className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 rounded-full border border-accent/10 bg-accent/[0.06]" />
 
       <div className="relative z-10">
         <h2 className="text-2xl font-extrabold text-white sm:text-3xl">{contactInfo.title}</h2>
@@ -43,7 +43,7 @@ export default function ContactInfo() {
         <ul className="mt-8 space-y-5">
           {details.map(({ icon: Icon, label, value, href }) => (
             <li key={label} className="flex gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent">
                 <Icon size={20} />
               </div>
               <div>
@@ -51,7 +51,7 @@ export default function ContactInfo() {
                 {href ? (
                   <a
                     href={href}
-                    className="mt-0.5 block text-sm text-white transition-colors hover:text-gold sm:text-base"
+                    className="mt-0.5 block text-sm text-white transition-colors hover:text-accent sm:text-base"
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
@@ -73,7 +73,7 @@ export default function ContactInfo() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 transition-all duration-300 hover:border-gold/50 hover:bg-gold/15 hover:text-gold"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 transition-all duration-300 hover:border-accent/50 hover:bg-accent/15 hover:text-accent"
             >
               <Icon size={16} />
             </a>

@@ -17,7 +17,7 @@ export default function Projects() {
     .filter((project) => project.image);
 
   return (
-    <section id="projects" className="section-padding bg-slate-50">
+    <section id="projects" className="section-padding bg-surface-alt">
       <div className="container-wide">
         <motion.div
           initial="hidden"
@@ -35,14 +35,14 @@ export default function Projects() {
           <motion.h2
             variants={fadeInUp}
             custom={0.1}
-            className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl lg:text-5xl"
+            className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
           >
             Featured <span className="text-gradient">Projects</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             custom={0.2}
-            className="mt-5 text-base leading-relaxed text-slate-500 sm:text-lg"
+            className="mt-5 text-base leading-relaxed text-muted sm:text-lg"
           >
             A curated showcase of our finest work across real estate, lifestyle,
             and premium brand campaigns.
@@ -71,7 +71,7 @@ export default function Projects() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-slate-500">
+          <p className="text-center text-muted">
             Add project images to{' '}
             <code className="text-primary">src/assets/projects/[client-folder]/</code>
           </p>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Logo from '../../components/Logo/Logo';
+import SEO from '../../components/seo/SEO';
 import { adminLogin, adminMe, setAdminToken } from '../../utils/api';
 
 export default function AdminLogin() {
@@ -43,7 +45,7 @@ export default function AdminLogin() {
 
   if (checking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-navy text-white/70">
+      <div className="flex min-h-screen items-center justify-center bg-primary text-white/70">
         Loading…
       </div>
     );
@@ -54,19 +56,22 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#0c1f3d] px-4 py-16">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary-hover to-primary-dark px-4 py-16">
+      <SEO title="Admin Login" description="Crestovia admin" canonical="/admin/log-in" noindex />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(37,99,235,0.3),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(10,52,120,0.3),transparent_55%)]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,rgba(212,175,55,0.12),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,rgba(255,122,0,0.12),transparent_50%)]"
         aria-hidden="true"
       />
 
       <div className="relative z-10 w-full max-w-md rounded-2xl border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-xl sm:p-10">
         <div className="mb-8 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-gold">Crestovia</p>
+          <div className="mb-5 flex justify-center">
+            <Logo size="xl" link={false} />
+          </div>
           <h1 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Admin Login</h1>
           <p className="mt-2 text-sm text-white/60">Sign in to manage contact leads</p>
         </div>
@@ -105,7 +110,7 @@ export default function AdminLogin() {
           </div>
 
           {error && (
-            <p className="rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-200" role="alert">
+            <p className="rounded-xl border border-error/30 bg-error/100/10 px-4 py-3 text-sm text-error" role="alert">
               {error}
             </p>
           )}
@@ -113,7 +118,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-gradient-to-r from-primary to-blue-600 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
+            className="btn-primary w-full py-3.5 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {loading ? 'Signing in…' : 'Sign In'}
           </button>

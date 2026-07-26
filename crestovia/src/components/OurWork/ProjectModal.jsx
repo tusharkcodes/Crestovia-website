@@ -45,7 +45,7 @@ export default function ProjectModal({ project, onClose }) {
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
-      <div className="absolute inset-0 bg-navy/50 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-primary/50 backdrop-blur-sm" />
 
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.97 }}
@@ -53,12 +53,12 @@ export default function ProjectModal({ project, onClose }) {
         exit={{ opacity: 0, y: 24, scale: 0.97 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-surface shadow-2xl"
       >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-navy shadow-md transition-colors hover:bg-white"
+          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md transition-colors hover:bg-white"
           aria-label="Close"
         >
           <HiX size={20} />
@@ -66,7 +66,7 @@ export default function ProjectModal({ project, onClose }) {
 
         <div className="overflow-y-auto">
           {/* Hero image */}
-          <div className={`relative aspect-[16/9] shrink-0 ${isDiagram ? 'bg-white' : 'bg-slate-100'}`}>
+          <div className={`relative aspect-[16/9] shrink-0 ${isDiagram ? 'bg-surface' : 'bg-surface-alt'}`}>
             {heroImage ? (
               <img
                 src={heroImage}
@@ -74,15 +74,15 @@ export default function ProjectModal({ project, onClose }) {
                 className={`h-full w-full ${isDiagram ? 'object-contain p-4' : 'object-cover'}`}
               />
             ) : (
-              <div className="flex h-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-                <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">
+              <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface-alt to-border">
+                <span className="text-sm font-semibold uppercase tracking-widest text-muted">
                   {categoryLabel}
                 </span>
               </div>
             )}
-            <div className={`absolute inset-0 ${isDiagram ? 'bg-gradient-to-t from-navy/70 via-transparent to-transparent' : 'bg-gradient-to-t from-navy/50 via-transparent to-transparent'}`} />
+            <div className={`absolute inset-0 ${isDiagram ? 'bg-gradient-to-t from-primary/70 via-transparent to-transparent' : 'bg-gradient-to-t from-primary/50 via-transparent to-transparent'}`} />
             <div className="absolute bottom-5 left-5 right-5">
-              <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-navy backdrop-blur-sm">
+              <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur-sm">
                 {categoryLabel}
               </span>
               <h2
@@ -96,12 +96,12 @@ export default function ProjectModal({ project, onClose }) {
 
           <div className="p-6 sm:p-8">
             {/* Description & tags */}
-            <p className="text-base leading-relaxed text-slate-600">{project.description}</p>
+            <p className="text-base leading-relaxed text-muted">{project.description}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                  className="rounded-md bg-surface-alt px-2.5 py-1 text-xs font-medium text-muted"
                 >
                   {tag}
                 </span>
@@ -113,7 +113,7 @@ export default function ProjectModal({ project, onClose }) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-primary/25 transition-transform hover:scale-[1.02]"
+                className="btn-primary mt-5 px-5 py-2.5"
               >
                 Visit {project.url.replace(/^https?:\/\//, '')}
                 <HiExternalLink size={16} />
@@ -123,7 +123,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Gallery */}
             {images.length > 1 && (
               <section className="mt-8">
-                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted">
                   Gallery
                 </h3>
                 <div className="relative overflow-hidden rounded-xl">
@@ -137,7 +137,7 @@ export default function ProjectModal({ project, onClose }) {
                     onClick={() =>
                       setGalleryIndex((i) => (i - 1 + images.length) % images.length)
                     }
-                    className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-navy shadow-md"
+                    className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md"
                     aria-label="Previous image"
                   >
                     <HiChevronLeft size={18} />
@@ -145,7 +145,7 @@ export default function ProjectModal({ project, onClose }) {
                   <button
                     type="button"
                     onClick={() => setGalleryIndex((i) => (i + 1) % images.length)}
-                    className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-navy shadow-md"
+                    className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md"
                     aria-label="Next image"
                   >
                     <HiChevronRight size={18} />
@@ -169,7 +169,7 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* Project details */}
             <section className="mt-8">
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-muted">
                 Project Details
               </h3>
               <div className="space-y-5">
@@ -180,9 +180,9 @@ export default function ProjectModal({ project, onClose }) {
                   { label: 'Process', value: project.process },
                   { label: 'Final Result', value: project.result },
                 ].map(({ label, value }) => (
-                  <div key={label} className="rounded-xl border border-slate-100 bg-slate-50/50 p-4">
-                    <h4 className="text-sm font-bold text-navy">{label}</h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-slate-500">{value}</p>
+                  <div key={label} className="rounded-xl border border-border bg-surface-alt/50 p-4">
+                    <h4 className="text-sm font-bold text-foreground">{label}</h4>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{value}</p>
                   </div>
                 ))}
               </div>
@@ -191,7 +191,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Services */}
             {project.services?.length > 0 && (
               <section className="mt-8">
-                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted">
                   Services
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -210,17 +210,17 @@ export default function ProjectModal({ project, onClose }) {
             {/* Results */}
             {project.metrics?.length > 0 && (
               <section className="mt-8">
-                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted">
                   Results
                 </h3>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {project.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="rounded-xl border border-slate-100 bg-white p-4 text-center shadow-sm"
+                      className="rounded-xl border border-border bg-surface p-4 text-center shadow-sm"
                     >
                       <p className="text-xl font-extrabold text-primary">{metric.value}</p>
-                      <p className="mt-1 text-xs text-slate-500">{metric.label}</p>
+                      <p className="mt-1 text-xs text-muted">{metric.label}</p>
                     </div>
                   ))}
                 </div>

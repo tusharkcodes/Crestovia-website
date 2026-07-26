@@ -53,7 +53,7 @@ const base = (id, name, icon, accent, content) => ({
 });
 
 export const services = [
-  base('real-estate', 'Real Estate', RealEstateDesign, 'from-blue-500 to-blue-700', {
+  base('real-estate', 'Real Estate', RealEstateDesign, 'from-primary to-primary-dark', {
     tagline: 'Premium marketing for property developers who demand excellence.',
     heroDescription:
       'End-to-end branding, property marketing, and digital campaigns that position your developments as the definitive luxury choice in competitive markets.',
@@ -83,7 +83,7 @@ export const services = [
     whyChooseUs:
       'We specialize in luxury real estate with 100+ projects delivered — combining creative excellence with data-driven marketing.',
   }),
-  base('graphic-design', 'Graphic Designing', GraphicsDesignIcons, 'from-indigo-500 to-blue-600', {
+  base('graphic-design', 'Graphic Designing', GraphicsDesignIcons, 'from-primary to-primary-hover', {
     tagline: 'Visual identities and marketing assets that captivate and convert.',
     heroDescription:
       'From brand systems to campaign creatives, we craft striking visuals that build recall and drive action across every touchpoint.',
@@ -113,7 +113,7 @@ export const services = [
     whyChooseUs:
       'Our designers blend aesthetic refinement with marketing strategy — every pixel serves a business purpose.',
   }),
-  base('seo', 'Search Engine Optimization', SeoIcon, 'from-blue-500 to-blue-700', {
+  base('seo', 'Search Engine Optimization', SeoIcon, 'from-primary to-primary-dark', {
     tagline: 'Dominate search rankings for real estate keywords that matter.',
     heroDescription:
       'Data-driven SEO strategies tailored for property developers — elevating organic rankings, traffic, and qualified leads for lasting growth.',
@@ -143,7 +143,7 @@ export const services = [
     whyChooseUs:
       'We understand real estate search behavior — from "3BHK in Baner" to luxury villa queries — and optimize accordingly.',
   }),
-  base('meta-ads', 'Google & Meta Ads', MetaIcons, 'from-blue-600 to-cyan-500', {
+  base('meta-ads', 'Google & Meta Ads', MetaIcons, 'from-primary to-primary-hover', {
     tagline: 'Performance campaigns that turn ad spend into measurable ROI.',
     heroDescription:
       'High-converting Google and Meta campaigns optimized for reach, engagement, and qualified leads with full transparency.',
@@ -173,7 +173,7 @@ export const services = [
     whyChooseUs:
       'We manage ₹crores in ad spend with a creative-first approach — your ads look premium and perform.',
   }),
-  base('social-media-campaigns', 'Social Media Campaign Management', SocialMediaIcons, 'from-blue-500 to-indigo-600', {
+  base('social-media-campaigns', 'Social Media Campaign Management', SocialMediaIcons, 'from-primary to-primary-hover', {
     tagline: 'Strategic social storytelling that builds communities and drives loyalty.',
     heroDescription:
       'End-to-end social media management — content strategy, premium creatives, community engagement, and performance analytics.',
@@ -203,7 +203,7 @@ export const services = [
     whyChooseUs:
       'We combine creative production with strategic planning — your feed looks as good as your best campaign.',
   }),
-  base('video-production', 'Video Production', VideoShotIcons, 'from-violet-500 to-blue-600', {
+  base('video-production', 'Video Production', VideoShotIcons, 'from-primary to-primary-hover', {
     tagline: 'Reels, influencer shoots, and video content that stops the scroll.',
     heroDescription:
       'Professional video production for social media — from on-site influencer shoots to polished reels that drive engagement and conversions.',
@@ -233,7 +233,7 @@ export const services = [
     whyChooseUs:
       'We produce video that feels editorial, not advertorial — premium quality that performs on every platform.',
   }),
-  base('ai-development', 'AI Development', AIIcons, 'from-violet-500 to-blue-600', {
+  base('ai-development', 'AI Development', AIIcons, 'from-primary to-primary-hover', {
     tagline: 'Intelligent systems that automate workflows and scale your business.',
     heroDescription:
       'Build intelligent applications and automations powered by AI — from lead scoring to custom agents that eliminate manual bottlenecks.',
@@ -263,7 +263,7 @@ export const services = [
     whyChooseUs:
       'We bridge marketing and technology — AI solutions that solve real business problems, not science projects.',
   }),
-  base('web-development', 'Web Development', WebDevelopmentIcon, 'from-sky-500 to-blue-700', {
+  base('web-development', 'Web Development', WebDevelopmentIcon, 'from-primary to-primary-dark', {
     tagline: 'Fast, responsive websites engineered for performance and conversion.',
     heroDescription:
       'Conversion-focused websites and landing pages built with modern technology — responsive, fast, and designed to turn visitors into customers.',
@@ -293,7 +293,7 @@ export const services = [
     whyChooseUs:
       'We build websites that look premium and perform — engineered with React and modern best practices.',
   }),
-  base('app-development', 'App Development', AndroidIcon, 'from-indigo-500 to-blue-600', {
+  base('app-development', 'App Development', AndroidIcon, 'from-primary to-primary-hover', {
     tagline: 'Next-generation mobile and web applications for modern businesses.',
     heroDescription:
       'Intelligent applications powered by AI that automate workflows, engage users, and deliver next-generation digital products.',

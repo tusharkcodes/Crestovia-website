@@ -1,14 +1,46 @@
 @import "tailwindcss";
 
+/*
+  Crestovia brand system — extracted from logo
+  Primary (royal blue) ~70–80% | Accent (orange) ~10–15% | Neutrals remainder
+*/
 @theme {
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
-  --color-navy: #0a1628;
-  --color-navy-light: #0f2744;
-  --color-gold: #d4af37;
-  --color-gold-light: #f0d78c;
+  /* Brand — Primary */
+  --color-primary: #0a3478;
+  --color-primary-hover: #082c67;
+  --color-primary-dark: #082c67;
+  --color-primary-light: #eaf2ff;
+
+  /* Brand — Accent */
+  --color-accent: #ff7a00;
+  --color-accent-hover: #e86d00;
+  --color-accent-light: #fff3e8;
+
+  /* Surfaces */
+  --color-background: #fafbfd;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f8fc;
+  --color-secondary: #ffffff;
+
+  /* Text */
+  --color-foreground: #111827;
+  --color-muted: #6b7280;
+
+  /* Borders & status */
+  --color-border: #e5e7eb;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626;
+
+  /* Typography */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgb(10 52 120 / 0.04), 0 8px 24px rgb(10 52 120 / 0.06);
+  --shadow-card-hover: 0 4px 12px rgb(10 52 120 / 0.08), 0 16px 40px rgb(10 52 120 / 0.1);
+  --shadow-btn: 0 8px 20px rgb(10 52 120 / 0.22);
+  --shadow-cta: 0 8px 24px rgb(255 122 0 / 0.28);
 }
 
 @layer base {
@@ -18,23 +50,45 @@
   }
 
   body {
-    @apply bg-white text-navy antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
 
   ::selection {
-    @apply bg-primary/20 text-navy;
+    @apply bg-primary-light text-primary;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white shadow-[var(--shadow-btn)] transition-all duration-300 hover:scale-[1.02] hover:bg-primary-hover hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-primary bg-surface px-7 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:scale-[1.02] hover:border-accent hover:text-accent;
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white shadow-[var(--shadow-cta)] transition-all duration-300 hover:scale-[1.02] hover:bg-accent-hover hover:shadow-lg;
+  }
+
+  .card-premium {
+    @apply rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)];
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary via-blue-500 to-cyan-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-primary-hover to-accent bg-clip-text text-transparent;
   }
 
-  .text-gradient-gold {
-    @apply bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent;
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent;
   }
 
   .glass {
@@ -42,7 +96,7 @@
   }
 
   .glass-light {
-    @apply border border-white/40 bg-white/70 backdrop-blur-xl;
+    @apply border border-border/80 bg-surface/80 backdrop-blur-xl;
   }
 
   .section-padding {
@@ -51,6 +105,14 @@
 
   .container-wide {
     @apply mx-auto w-full max-w-7xl;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(165deg, #eaf2ff 0%, #fafbfd 45%, #ffffff 100%);
+  }
+
+  .section-alt {
+    @apply bg-surface-alt;
   }
 
   .scrollbar-hide {

@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
+import PageHeroBackdrop, { PAGE_HERO_GRADIENT } from '../Hero/PageHeroBackdrop';
 
 export default function OurWorkHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy-light to-primary/80 pt-32 pb-16 sm:pt-36 sm:pb-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(37,99,235,0.25),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(212,175,55,0.08),transparent_45%)]" />
+    <section
+      className="relative overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20"
+      style={{ background: PAGE_HERO_GRADIENT }}
+    >
+      <PageHeroBackdrop />
 
       <div className="container-wide relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -13,15 +16,16 @@ export default function OurWorkHero() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="max-w-2xl"
         >
-          <span className="mb-4 inline-block font-bold text-xl uppercase tracking-widest text-gold">
+          <span className="mb-4 inline-block text-xl font-bold uppercase tracking-widest text-[#FF7A00]">
             Portfolio
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Our Work
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
             Every project represents a business challenge solved through creativity,
-            marketing, design, and technology. Explore how we help brands grow.
+            marketing, design, and technology. Explore how Crestovia — a digital marketing
+            agency in Pune — helps brands grow across India.
           </p>
         </motion.div>
       </div>

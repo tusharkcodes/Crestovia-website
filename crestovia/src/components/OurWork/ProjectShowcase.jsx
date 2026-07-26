@@ -178,7 +178,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
   };
 
   return (
-    <div className="relative bg-slate-50/50 py-10 sm:py-14">
+    <div className="relative bg-surface-alt/50 py-10 sm:py-14">
       <div className="container-wide px-4 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           <motion.div
@@ -189,7 +189,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
             transition={{ duration: 0.22 }}
           >
             {projects.length === 0 ? (
-              <p className="py-20 text-center text-slate-400">Projects coming soon.</p>
+              <p className="py-20 text-center text-muted">Projects coming soon.</p>
             ) : (
               <div className="relative">
                 {canScroll && (
@@ -199,7 +199,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
                       aria-label="Scroll projects left"
                       onClick={() => scrollByCard(-1)}
                       disabled={atStart && !shouldLoop}
-                      className="absolute -left-1 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-md transition enabled:hover:border-primary/30 enabled:hover:text-primary disabled:opacity-30 sm:-left-2 sm:flex lg:h-11 lg:w-11"
+                      className="absolute -left-1 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-md transition enabled:hover:border-primary/30 enabled:hover:text-primary disabled:opacity-30 sm:-left-2 sm:flex lg:h-11 lg:w-11"
                     >
                       <HiChevronLeft size={20} />
                     </button>
@@ -208,7 +208,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
                       aria-label="Scroll projects right"
                       onClick={() => scrollByCard(1)}
                       disabled={atEnd && !shouldLoop}
-                      className="absolute -right-1 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-md transition enabled:hover:border-primary/30 enabled:hover:text-primary disabled:opacity-30 sm:-right-2 sm:flex lg:h-11 lg:w-11"
+                      className="absolute -right-1 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-md transition enabled:hover:border-primary/30 enabled:hover:text-primary disabled:opacity-30 sm:-right-2 sm:flex lg:h-11 lg:w-11"
                     >
                       <HiChevronRight size={20} />
                     </button>
@@ -247,7 +247,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
                       type="button"
                       aria-label="Previous"
                       onClick={() => scrollByCard(-1)}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-sm"
                     >
                       <HiChevronLeft size={18} />
                     </button>
@@ -255,7 +255,7 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
                       type="button"
                       aria-label="Next"
                       onClick={() => scrollByCard(1)}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-sm"
                     >
                       <HiChevronRight size={18} />
                     </button>
@@ -267,8 +267,8 @@ export default function ProjectShowcase({ activeCategory, onViewProject }) {
         </AnimatePresence>
       </div>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-slate-50/80 to-transparent sm:w-16" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-slate-50/80 to-transparent sm:w-16" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-surface-alt/80 to-transparent sm:w-16" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-surface-alt/80 to-transparent sm:w-16" />
     </div>
   );
 }

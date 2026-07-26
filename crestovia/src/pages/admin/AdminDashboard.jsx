@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Logo from '../../components/Logo/Logo';
 import {
   adminLogout,
   clearAdminToken,
@@ -81,12 +82,15 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-navy text-white">
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-border bg-primary text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gold">Crestovia</p>
-            <h1 className="text-lg font-extrabold sm:text-xl">Admin Dashboard</h1>
+          <div className="flex items-center gap-4">
+            <Logo size="md" link={false} />
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Crestovia</p>
+              <h1 className="text-lg font-extrabold sm:text-xl">Admin Dashboard</h1>
+            </div>
           </div>
           <button
             type="button"
@@ -100,18 +104,18 @@ export default function AdminDashboard() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Total Leads</p>
-            <p className="mt-2 text-3xl font-extrabold text-navy">{stats.total ?? 0}</p>
+          <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">Total Leads</p>
+            <p className="mt-2 text-3xl font-extrabold text-foreground">{stats.total ?? 0}</p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Recent Today</p>
+          <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">Recent Today</p>
             <p className="mt-2 text-3xl font-extrabold text-primary">{stats.recent_today ?? 0}</p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:col-span-2 lg:col-span-1">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Showing</p>
-            <p className="mt-2 text-3xl font-extrabold text-navy">
-              {total} <span className="text-base font-medium text-slate-400">results</span>
+          <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm sm:col-span-2 lg:col-span-1">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">Showing</p>
+            <p className="mt-2 text-3xl font-extrabold text-foreground">
+              {total} <span className="text-base font-medium text-muted">results</span>
             </p>
           </div>
         </div>
@@ -122,24 +126,24 @@ export default function AdminDashboard() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name, email, or phone…"
-            className="w-full flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-navy outline-none focus:border-primary"
+            className="input-field flex-1"
           />
           <button
             type="submit"
-            className="rounded-full bg-gradient-to-r from-primary to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-primary/20"
+            className="btn-primary px-6 py-3 shadow-md"
           >
             Search
           </button>
         </form>
 
         {error && (
-          <p className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</p>
+          <p className="mb-4 rounded-xl border border-error/30 bg-error/10 px-4 py-3 text-sm text-error">{error}</p>
         )}
 
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-slate-100 text-left text-sm">
-              <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
+            <table className="min-w-full divide-y divide-border text-left text-sm">
+              <thead className="bg-surface-alt text-xs uppercase tracking-wider text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Name</th>
                   <th className="px-4 py-3 font-semibold">Email</th>
@@ -150,38 +154,38 @@ export default function AdminDashboard() {
                   <th className="px-4 py-3 font-semibold">Submitted</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-border">
                 {loading ? (
                   <tr>
-                    <td colSpan={7} className="px-4 py-16 text-center text-slate-400">
+                    <td colSpan={7} className="px-4 py-16 text-center text-muted">
                       Loading leads…
                     </td>
                   </tr>
                 ) : leads.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="px-4 py-16 text-center">
-                      <p className="text-base font-semibold text-navy">No leads yet</p>
-                      <p className="mt-1 text-sm text-slate-400">
+                      <p className="text-base font-semibold text-foreground">No leads yet</p>
+                      <p className="mt-1 text-sm text-muted">
                         Contact form submissions will appear here.
                       </p>
                     </td>
                   </tr>
                 ) : (
                   leads.map((lead) => (
-                    <tr key={lead.id} className="align-top hover:bg-slate-50/80">
-                      <td className="whitespace-nowrap px-4 py-3 font-medium text-navy">{lead.name}</td>
-                      <td className="px-4 py-3 text-slate-600">
+                    <tr key={lead.id} className="align-top hover:bg-surface-alt/80">
+                      <td className="whitespace-nowrap px-4 py-3 font-medium text-foreground">{lead.name}</td>
+                      <td className="px-4 py-3 text-muted">
                         <a href={`mailto:${lead.email}`} className="hover:text-primary">
                           {lead.email}
                         </a>
                       </td>
-                      <td className="whitespace-nowrap px-4 py-3 text-slate-600">{lead.phone}</td>
-                      <td className="px-4 py-3 text-slate-600">{lead.service}</td>
-                      <td className="whitespace-nowrap px-4 py-3 text-slate-600">{lead.budget || '—'}</td>
-                      <td className="max-w-xs px-4 py-3 text-slate-500">
+                      <td className="whitespace-nowrap px-4 py-3 text-muted">{lead.phone}</td>
+                      <td className="px-4 py-3 text-muted">{lead.service}</td>
+                      <td className="whitespace-nowrap px-4 py-3 text-muted">{lead.budget || '—'}</td>
+                      <td className="max-w-xs px-4 py-3 text-muted">
                         <p className="line-clamp-3">{lead.message}</p>
                       </td>
-                      <td className="whitespace-nowrap px-4 py-3 text-slate-500">
+                      <td className="whitespace-nowrap px-4 py-3 text-muted">
                         {formatDate(lead.created_at)}
                       </td>
                     </tr>
@@ -192,8 +196,8 @@ export default function AdminDashboard() {
           </div>
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-between gap-3 border-t border-slate-100 px-4 py-3">
-              <p className="text-xs text-slate-400">
+            <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
+              <p className="text-xs text-muted">
                 Page {page} of {totalPages}
               </p>
               <div className="flex gap-2">
@@ -201,7 +205,7 @@ export default function AdminDashboard() {
                   type="button"
                   disabled={page <= 1}
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
-                  className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm disabled:opacity-40"
+                  className="rounded-lg border border-border px-3 py-1.5 text-sm disabled:opacity-40"
                 >
                   Previous
                 </button>
@@ -209,7 +213,7 @@ export default function AdminDashboard() {
                   type="button"
                   disabled={page >= totalPages}
                   onClick={() => setPage((p) => p + 1)}
-                  className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm disabled:opacity-40"
+                  className="rounded-lg border border-border px-3 py-1.5 text-sm disabled:opacity-40"
                 >
                   Next
                 </button>

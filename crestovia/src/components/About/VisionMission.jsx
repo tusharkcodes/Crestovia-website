@@ -7,11 +7,11 @@ import missionImage from '../../assets/about/mission.png';
 
 function ContentCard({ title, description }) {
   return (
-    <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-xl shadow-navy/5 sm:p-10 lg:p-12">
-      <h2 className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">
+    <div className="rounded-3xl border border-border bg-surface p-8 shadow-xl shadow-primary/5 sm:p-10 lg:p-12">
+      <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
-      <p className="mt-6 text-base leading-relaxed text-slate-500 sm:text-lg lg:text-xl lg:leading-relaxed">
+      <p className="mt-6 text-base leading-relaxed text-muted sm:text-lg lg:text-xl lg:leading-relaxed">
         {description}
       </p>
     </div>
@@ -21,7 +21,7 @@ function ContentCard({ title, description }) {
 export default function VisionMission() {
   return (
     <>
-      <section className="section-padding bg-white">
+      <section className="section-padding section-alt">
         <div className="container-wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <motion.div
@@ -48,7 +48,7 @@ export default function VisionMission() {
         </div>
       </section>
 
-      <section className="section-padding bg-slate-50/50">
+      <section className="section-padding bg-surface-alt/50">
         <div className="container-wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <motion.div

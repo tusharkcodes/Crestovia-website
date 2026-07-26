@@ -5,7 +5,7 @@ import ServiceCard from './ServiceCard';
 
 export default function Services() {
   return (
-    <section id="services" className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section id="services" className="bg-surface px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="container-wide">
         <motion.div
           variants={staggerContainer}
@@ -17,14 +17,14 @@ export default function Services() {
           <motion.span
             variants={fadeInUp}
             custom={0}
-            className="mb-3 inline-block rounded-md bg-gold/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-gold sm:text-xs"
+            className="mb-3 inline-block rounded-md bg-accent/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-accent sm:text-xs"
           >
             Our Services
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={0.1}
-            className="text-2xl font-extrabold tracking-tight text-navy sm:text-3xl lg:text-4xl"
+            className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl"
           >
             What Our Digital Marketing Agency{' '}
             <span className="text-gradient">Offers</span>
@@ -32,7 +32,7 @@ export default function Services() {
           <motion.p
             variants={fadeInUp}
             custom={0.2}
-            className="mt-3 text-sm leading-relaxed text-slate-500 sm:mt-4 sm:text-base"
+            className="mt-3 text-sm leading-relaxed text-muted sm:mt-4 sm:text-base"
           >
             End-to-end digital solutions engineered to elevate your brand, amplify
             your reach, and deliver measurable business growth.
