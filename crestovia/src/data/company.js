@@ -7,7 +7,7 @@ export const company = {
     'Crestovia is a Pune-based digital marketing agency built for businesses that want results, not just reports. Founded by Ms. Prajakta Pawar & Mr. Vinit Gaikwad, we combine sharp technical execution with hands-on client partnership  because great marketing needs both a strategist who understands the numbers and a team that understands your business. We started Crestovia with a simple belief: most agencies either talk a big game about strategy or hide behind vanity metrics. We wanted to build something different  an agency where every campaign is engineered for measurable growth, and every client relationship is treated like a partnership, not a transaction.',
   ],
   email: 'contact@crestovia.in',
-  phone: '+91 9623409666',
+  phone: '+91 8830815308',
   address: 'Baner, Pune, Maharashtra, India',
   social: {
     facebook: 'https://facebook.com',
