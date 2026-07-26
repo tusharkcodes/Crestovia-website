@@ -13,7 +13,7 @@ export const blogPosts = [
     publishedAt: '2026-06-01',
     modifiedAt: '2026-06-01',
     readingTime: '5 min read',
-    image: '/crestovia-logo.png',
+    image: '/og-image-v2.png',
     category: 'Digital Marketing',
     content: [
       'Choosing a digital marketing agency in Pune gives growing brands a partner who understands Maharashtra’s competitive markets while executing modern SEO, ads, and web experiences.',
@@ -31,7 +31,7 @@ export const blogPosts = [
     publishedAt: '2026-06-15',
     modifiedAt: '2026-06-15',
     readingTime: '6 min read',
-    image: '/crestovia-logo.png',
+    image: '/og-image-v2.png',
     category: 'SEO & Ads',
     content: [
       'SEO builds durable visibility; Google Ads captures high-intent demand quickly. Most businesses in Pune and across India need both — sequenced by budget and sales cycle.',

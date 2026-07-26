@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import {
   absoluteUrl,
   DEFAULT_OG_IMAGE,
+  FAVICON_URL,
   SITE_LOCALE,
   SITE_NAME,
   THEME_COLOR,
@@ -27,7 +28,7 @@ export default function SEO({
 }) {
   const fullTitle = title?.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical.startsWith('http') ? canonical : absoluteUrl(canonical);
-  const ogImage = image?.startsWith('http') ? image : absoluteUrl(image || '/crestovia-logo.png');
+  const ogImage = image?.startsWith('http') ? image : absoluteUrl(image || '/og-image-v2.png');
   const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
   return (
@@ -44,6 +45,12 @@ export default function SEO({
       <meta name="theme-color" content={THEME_COLOR} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* Cache-busted brand favicon (v2) */}
+      <link rel="icon" href="/favicon-v2.png" type="image/png" sizes="32x32" />
+      <link rel="icon" href="/favicon-v2.png" type="image/png" sizes="192x192" />
+      <link rel="shortcut icon" href="/favicon-v2.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png" sizes="180x180" />
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
@@ -68,6 +75,9 @@ export default function SEO({
         <meta property="article:modified_time" content={modifiedTime} />
       ) : null}
       {type === 'article' ? <meta property="article:author" content={author} /> : null}
+
+      {/* Help crawlers discover the new favicon URL */}
+      <link rel="preload" as="image" href={FAVICON_URL} />
     </Helmet>
   );
 }
