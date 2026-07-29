@@ -17,14 +17,14 @@ export default function Clients() {
             custom={0}
             className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent"
           >
-            Trusted Partners
+            Our Trusted Partners & Clients
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={0.1}
             className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
           >
-            Our Trusted Clients
+            Associated Partners & Clients
           </motion.h2>
           <motion.p
             variants={fadeInUp}
