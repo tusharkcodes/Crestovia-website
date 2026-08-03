@@ -46,11 +46,12 @@ export default function SEO({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Cache-busted brand favicon (v2) */}
-      <link rel="icon" href="/favicon-v2.png" type="image/png" sizes="32x32" />
-      <link rel="icon" href="/favicon-v2.png" type="image/png" sizes="192x192" />
-      <link rel="shortcut icon" href="/favicon-v2.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png" sizes="180x180" />
+      {/* Cache-busted brand favicon (v3) */}
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/favicon-48-v3.png" type="image/png" sizes="48x48" />
+      <link rel="icon" href="/favicon-v3.png" type="image/png" sizes="192x192" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon-v3.png" sizes="180x180" />
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />

@@ -5,7 +5,7 @@ export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://crestovia.in'
 );
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image-v2.png`;
-export const FAVICON_URL = `${SITE_URL}/favicon-v2.png`;
+export const FAVICON_URL = `${SITE_URL}/favicon-v3.png`;
 export const SITE_NAME = 'Crestovia';
 export const SITE_LOCALE = 'en_IN';
 export const THEME_COLOR = '#0A3478';
