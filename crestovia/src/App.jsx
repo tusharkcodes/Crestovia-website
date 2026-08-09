@@ -76,6 +76,7 @@ export default function App() {
           <Route path="/blogs/:slug" element={<BlogPost />} />
 
           <Route path="/admin/log-in" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<Navigate to="/admin/log-in" replace />} />
           <Route
             path="/admin/dash-board"
             element={
@@ -92,6 +93,7 @@ export default function App() {
               </RequireAdmin>
             }
           />
+          <Route path="/admin/dashboard" element={<Navigate to="/admin/dash-board" replace />} />
           <Route path="/admin" element={<Navigate to="/admin/log-in" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

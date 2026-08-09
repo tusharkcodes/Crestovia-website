@@ -7,6 +7,6 @@ export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://crestovia.in')
 /**
  * Backend API base URL.
  * - Development: http://localhost:8000
- * - Production:  https://crestovia.in/api
+ * - Production:  https://api.crestovia.in
  */
 export const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');

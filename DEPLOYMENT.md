@@ -103,7 +103,7 @@ Optional environment variables:
 
 ```
 VITE_SITE_URL=https://crestovia.in
-VITE_API_URL=https://crestovia.in/api
+VITE_API_URL=https://api.crestovia.in
 ```
 
 Then click **Save and redeploy**.
@@ -123,7 +123,7 @@ npm run build
 
 ```
 VITE_SITE_URL=https://crestovia.in
-VITE_API_URL=https://crestovia.in/api
+VITE_API_URL=https://api.crestovia.in
 ```
 
 Serve the build from `/var/www/crestovia/dist` (symlink or copy):
@@ -172,13 +172,13 @@ sudo certbot --nginx -d crestovia.in -d www.crestovia.in
 |-------|----------------|
 | Site | https://crestovia.in |
 | Health | https://crestovia.in/health → `{"status":"ok"}` |
-| API health | https://crestovia.in/api/health → `{"status":"ok"}` |
+| API health | https://api.crestovia.in/ → `{"message":"Crestovia API is running",...}` |
 | Contact form | Submit on `/contact` |
 | Admin | https://crestovia.in/admin/log-in → dashboard shows lead |
 
 ```bash
 curl -s https://crestovia.in/health
-curl -s https://crestovia.in/api/health
+curl -s https://api.crestovia.in/
 sudo systemctl status crestovia-api
 sudo journalctl -u crestovia-api -n 50 --no-pager
 ```
@@ -215,9 +215,9 @@ sudo systemctl restart crestovia-api
 - [ ] `CORS_ORIGINS` is exactly `https://crestovia.in,https://www.crestovia.in` (no `*`)
 - [ ] `COOKIE_SECURE=true`
 - [ ] Strong unique `JWT_SECRET` and `ADMIN_PASSWORD`
-- [ ] Frontend built with `VITE_API_URL=https://crestovia.in/api`
+- [ ] Frontend built with `VITE_API_URL=https://api.crestovia.in`
 - [ ] No hardcoded `localhost` / `127.0.0.1` in application source used at runtime
-- [ ] Nginx proxies `/api/` → `127.0.0.1:8000` and redirects HTTP → HTTPS
+- [ ] Backend CORS allows `https://crestovia.in` (and `www` if used) for `https://api.crestovia.in`
 - [ ] systemd service enabled and running
 - [ ] Atlas IP allowlist includes the VPS
 - [ ] `/health` returns `{"status":"ok"}`

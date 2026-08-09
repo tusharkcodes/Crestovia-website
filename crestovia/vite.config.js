@@ -13,6 +13,7 @@ export default defineConfig({
     host: 'localhost',
     port: 5173,
     open: true,
+    // Only proxy API paths — never /admin UI routes (SPA must serve those)
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',
