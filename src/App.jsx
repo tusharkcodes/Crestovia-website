@@ -15,7 +15,7 @@ const jsonLd = {
   name: portfolioData.name,
   jobTitle: portfolioData.role,
   description: portfolioData.metaDescription,
-  image: '/prajakta.jpg',
+  image: 'https://prajakta-portfolio.crestovia.in/prajakta.jpg',
   worksFor: {
     '@type': 'Organization',
     name: portfolioData.crestovia.name,

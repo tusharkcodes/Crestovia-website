@@ -97,12 +97,12 @@ export default function CaseStudies() {
             </div>
             <dl className="mt-6 space-y-4 text-sm">
               <div>
-                <dt className="font-semibold text-navy">Challenge</dt>
-                <dd className="mt-1 text-navy/70">{active.challenge}</dd>
+                {/* <dt className="font-semibold text-navy">Challenge</dt>
+                <dd className="mt-1 text-navy/70">{active.challenge}</dd> */}
               </div>
               <div>
-                <dt className="font-semibold text-navy">Approach</dt>
-                <dd className="mt-1 text-navy/70">{active.approach}</dd>
+                {/* <dt className="font-semibold text-navy">Approach</dt>
+                <dd className="mt-1 text-navy/70">{active.approach}</dd> */}
               </div>
               <div>
                 <dt className="font-semibold text-navy">Services</dt>

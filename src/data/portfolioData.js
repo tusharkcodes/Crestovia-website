@@ -4,7 +4,7 @@ export const portfolioData = {
   siteTitle: 'Prajakta Pawar | Digital Marketing Specialist',
   metaDescription:
     'Prajakta Pawar is a Digital Marketing Specialist helping businesses grow through performance marketing, lead generation, social media, content and digital growth.',
-  canonicalUrl: 'ADD_CANONICAL_URL_HERE',
+  canonicalUrl: 'https://prajakta-portfolio.crestovia.in/',
   intro:
     'I help businesses build stronger brands, reach the right audience and turn digital marketing into measurable growth.',
   heroSupporting:
@@ -89,8 +89,8 @@ export const portfolioData = {
       icon: 'building',
       summary:
         'Digital marketing for property brands that need visibility, qualified enquiries and a stronger online presence.',
-      challenge: 'ADD_CHALLENGE_HERE',
-      approach: 'ADD_APPROACH_HERE',
+      // challenge: 'ADD_CHALLENGE_HERE',
+      // approach: 'ADD_APPROACH_HERE',
       services: [
         'Marketing strategy',
         'Lead generation',
@@ -106,8 +106,8 @@ export const portfolioData = {
       icon: 'factory',
       summary:
         'B2B-focused digital marketing to support visibility, lead generation and website-led growth.',
-      challenge: 'ADD_CHALLENGE_HERE',
-      approach: 'ADD_APPROACH_HERE',
+      // challenge: 'ADD_CHALLENGE_HERE',
+      // approach: 'ADD_APPROACH_HERE',
       services: [
         'B2B marketing',
         'Lead generation',
@@ -123,8 +123,8 @@ export const portfolioData = {
       icon: 'graduation',
       summary:
         'Social, content and paid campaigns that help education brands reach the right learners and enquiries.',
-      challenge: 'ADD_CHALLENGE_HERE',
-      approach: 'ADD_APPROACH_HERE',
+      // challenge: 'ADD_CHALLENGE_HERE',
+      // approach: 'ADD_APPROACH_HERE',
       services: [
         'Social media',
         'Lead generation',
@@ -140,8 +140,8 @@ export const portfolioData = {
       icon: 'layers',
       summary:
         'Performance marketing and paid acquisition support for digital products looking to grow with measurable campaigns.',
-      challenge: 'ADD_CHALLENGE_HERE',
-      approach: 'ADD_APPROACH_HERE',
+      // challenge: 'ADD_CHALLENGE_HERE',
+      // approach: 'ADD_APPROACH_HERE',
       services: [
         'Performance marketing',
         'Lead generation',
