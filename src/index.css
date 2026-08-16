@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #072d6a;
+  --color-navy-soft: #0c3d8a;
+  --color-orange: #f47414;
+  --color-peach: #ff9a4a;
+  --color-orange-soft: #fff1e4;
+  --color-paper: #f4f1ea;
+  --color-ink: #072d6a;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 12% 0%, rgb(7 45 106 / 0.08), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgb(244 116 20 / 0.12), transparent 32%),
+    var(--color-paper);
+  color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #f47414;
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid #f47414;
+  outline-offset: 3px;
+}
+
+.organic-frame {
+  border: 0;
+  border-radius: 2rem;
+  background: rgb(255 255 255 / 0.55);
+  box-shadow: 0 20px 60px -36px rgb(7 45 106 / 0.35);
+}
+
+.organic-card {
+  border: 1px solid rgb(7 45 106 / 0.12);
+  border-radius: 1.5rem;
+  background: white;
+}
+
+.float-a {
+  animation: floatY 5.2s ease-in-out infinite;
+}
+
+.float-b {
+  animation: floatY 6.4s ease-in-out infinite reverse;
+}
+
+.float-c {
+  animation: floatY 4.6s ease-in-out infinite 0.4s;
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: fadeUp 0.8s ease both;
+}
+
+.sticker-photo {
+  filter: drop-shadow(0 28px 30px rgb(7 45 106 / 0.28));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .float-a,
+  .float-b,
+  .float-c,
+  .reveal {
+    animation: none;
+  }
+}
